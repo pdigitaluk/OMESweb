@@ -1196,6 +1196,174 @@
     .pull-quote-name { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
     .pull-quote-loc  { font-size: 12px; color: rgba(255,255,255,0.28); letter-spacing: 0.04em; }
 
+
+    /* ══════════════════════════════
+       ABOUT SPLIT IMAGE — desktop styles (extracted from inline)
+    ══════════════════════════════ */
+    .split__img--about {
+      display: flex; align-items: center; justify-content: flex-end;
+      background: transparent; padding: 48px 40px 48px 0;
+    }
+    .about-img-inner {
+      width: 34%; aspect-ratio: 9/16;
+      border-radius: 14px; overflow: hidden;
+      flex-shrink: 0; position: relative;
+    }
+
+    /* ══════════════════════════════
+       MOBILE — COMPREHENSIVE
+    ══════════════════════════════ */
+
+    /* ── Nav ── */
+    @media (max-width: 720px) {
+      .nav { padding: 10px 14px; }
+      .nav__pill { height: 52px; padding: 4px 4px 4px 4px; border-radius: 12px; }
+      .nav__logo-wrap { padding: 0 10px; }
+      .nav__logo { height: 30px; }
+      .nav__action { width: 44px; height: 44px; border-radius: 10px; }
+    }
+
+    /* ── Hero ── */
+    @media (max-width: 720px) {
+      .hero { min-height: 100svh; }
+      .hero__overlay {
+        background:
+          linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.25) 30%, rgba(0,0,0,0.65) 70%, #111 100%),
+          linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.3));
+      }
+      .hero__inner { align-items: flex-end; padding: 0 20px 110px; }
+      .hero__text { max-width: 100%; text-align: center; }
+      .hero__kicker { justify-content: center; }
+      .hero h1 { font-size: clamp(34px, 10vw, 52px); }
+      .hero__sub { font-size: 15px; max-width: 100%; margin-bottom: 32px; }
+      .hero__ctas { justify-content: center; flex-direction: column; align-items: center; }
+      .hero__ctas > * { width: 100%; max-width: 300px; justify-content: center; }
+      .hero__lights-toggle { bottom: auto; top: 76px; right: 14px; padding: 6px 10px 6px 8px; }
+      .hero__logo { height: 70px; margin-bottom: 24px; }
+    }
+
+    /* ── Marquee ── */
+    @media (max-width: 720px) {
+      .marquee-item { padding: 0 20px; font-size: 10px; gap: 14px; }
+    }
+
+    /* ── Lighting showcase ── */
+    @media (max-width: 720px) {
+      .lighting-showcase { padding: 56px 0; }
+      .lighting-showcase__header { padding: 0 20px 28px; }
+      .slider-card { flex: 0 0 170px; }
+      .slider-row { padding: 4px 16px 16px; gap: 12px; justify-content: flex-start; }
+      .lighting-showcase__hint { font-size: 13px; }
+    }
+
+    /* ── Stats row ── */
+    @media (max-width: 720px) {
+      .stats-row { padding: 12px 16px; }
+      .stats-row-inner { grid-template-columns: 1fr 1fr; }
+      .stat-cell:nth-child(1),
+      .stat-cell:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .stat-cell:nth-child(3) { border-right: 1px solid rgba(255,255,255,0.06); }
+      .stat-num { font-size: clamp(18px, 5vw, 26px); }
+    }
+
+    /* ── Statement section ── */
+    @media (max-width: 720px) {
+      .statement-section { padding: 72px 20px; }
+      .statement-heading { font-size: clamp(26px, 8vw, 38px); }
+      .statement-chips { gap: 6px; }
+    }
+
+    /* ── Services scroll ── */
+    @media (max-width: 720px) {
+      .svc-scroll-inner { padding: 0 20px; }
+      .svc-scroll-h { font-size: clamp(28px, 8vw, 44px); }
+      .svc-scroll-p { font-size: 15px; margin-bottom: 28px; }
+      .svc-scroll-card { padding: 60px 0; }
+    }
+
+    /* ── About split — mobile ── */
+    @media (max-width: 1000px) {
+      .split__img--about { justify-content: center; padding: 48px 28px; min-height: auto; }
+      .about-img-inner { width: 42%; }
+    }
+    @media (max-width: 720px) {
+      .split__img--about { padding: 40px 24px; }
+      .about-img-inner { width: 58%; }
+    }
+    @media (max-width: 480px) {
+      .about-img-inner { width: 70%; }
+    }
+
+    /* ── Split content ── */
+    @media (max-width: 720px) {
+      .split__content { padding: 40px 20px 56px; }
+      .split__content-inner { max-width: 100%; }
+      .split:not(.split--rev) .split__content { padding-right: 20px; }
+      .split--rev .split__content { padding-left: 20px; }
+    }
+
+    /* ── Process steps ── */
+    @media (max-width: 720px) {
+      .section { padding: 72px 20px; }
+      .section-intro { margin-bottom: 48px; }
+    }
+
+    /* ── Reviews ── */
+    @media (max-width: 720px) {
+      .review-card { padding: 24px; }
+    }
+
+    /* ── Map + CTA section — disable sticky animation ── */
+    @media (max-width: 720px) {
+      .map-scroll-outer { height: auto !important; overflow: visible; }
+      .map-cta-wrapper { position: static; height: auto; overflow: visible; flex-direction: column; }
+      .map-scroll-sticky { height: auto; flex-shrink: unset; overflow: visible; }
+      .map-scroll-sticky .split { display: flex; flex-direction: column; height: auto; min-height: auto; }
+      .map-scroll-sticky .split--rev { direction: ltr; }
+      .map-scroll-sticky .split__img { height: 260px; min-height: unset; }
+      .map-scroll-sticky .split__content { padding: 40px 20px 48px; }
+      .map-scroll-sticky .split__content-inner { max-width: 100%; }
+      .map-cta-connected { min-height: auto; }
+      .map-cta-connected__inner { padding: 48px 20px 80px; }
+      .map-cta-connected__inner h2 { font-size: clamp(26px, 7vw, 36px); margin-bottom: 24px; }
+      .map-cta-connected__btns { flex-direction: column; align-items: center; }
+      .map-cta-connected__btns > * { width: 100%; max-width: 300px; justify-content: center; }
+      .map-chips { padding-bottom: 24px; }
+    }
+
+    /* ── CTA section ── */
+    @media (max-width: 720px) {
+      .cta-section { padding: 80px 20px 120px; }
+      .cta-section h2 { font-size: clamp(32px, 9vw, 52px); }
+      .cta-section p { font-size: 15px; margin-bottom: 32px; }
+    }
+
+    /* ── Footer ── */
+    @media (max-width: 720px) {
+      .footer { padding: 52px 20px 100px; }
+      .footer__links { gap: 8px 18px; }
+      .footer__logo { height: 32px; margin-bottom: 20px; }
+    }
+
+    /* ── Sticky CTA — safe area ── */
+    @media (max-width: 720px) {
+      .sticky-cta { padding: 12px 16px max(20px, env(safe-area-inset-bottom, 20px)); }
+    }
+
+    /* ── Pull quote ── */
+    @media (max-width: 720px) {
+      .pull-quote-section { padding: 80px 20px; }
+      .pull-quote-text { font-size: clamp(22px, 7vw, 34px); margin-bottom: 28px; }
+    }
+
+    /* ── Very small phones ── */
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 30px; }
+      .btn--wa-lg { font-size: 14px; padding: 14px 20px; }
+      .svc-scroll-h { font-size: 26px; }
+    }
+
   </style>
 </head>
 <body>
@@ -1536,8 +1704,8 @@
 
 <!-- SPLIT — Why Choose Us -->
 <div class="split" id="about">
-  <div class="split__img anim-left" style="display:flex;align-items:center;justify-content:flex-end;background:transparent;padding:48px 40px 48px 0;">
-    <div style="width:34%;aspect-ratio:9/16;border-radius:14px;overflow:hidden;flex-shrink:0;position:relative;">
+  <div class="split__img split__img--about anim-left">
+    <div class="about-img-inner">
       <img src="assets/img/OMES/butcher bhoy front.jpeg" alt="OM Electrical Solutions van outside Butcher Boy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;">
     </div>
   </div>
@@ -1868,7 +2036,9 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
   }
 
   var lastIdx = -1;
+  function isMobileMap() { return window.innerWidth <= 720; }
   function update() {
+    if (isMobileMap()) return;
     var sticky = outer.querySelector('.map-cta-wrapper');
     var rect   = outer.getBoundingClientRect();
     var scrollable = outer.offsetHeight - (sticky ? sticky.offsetHeight : window.innerHeight);
@@ -1886,8 +2056,8 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
       var img = new Image();
       img.onload = function() {
         loaded++;
-        if (loaded === 1) drawFrame(img);
-        if (loaded === TOTAL) update();
+        if (loaded === 1) drawFrame(img); // always draw frame 1 (mobile shows this static)
+        if (loaded === TOTAL && !isMobileMap()) update();
       };
       img.src = FOLDER + pad(index + 1) + '.png';
       frames[index] = img;
