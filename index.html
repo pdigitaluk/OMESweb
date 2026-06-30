@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OM Electrical Solutions | Electrician in Norwich &amp; Norfolk</title>
+  <meta name="description" content="Professional electrician based in Norwich, Norfolk. Full rewires, fuse board upgrades, EV charger installation, extra sockets and lighting. Fast response, free quotes. Call Oliver on 07842 492651.">
+  <meta name="keywords" content="electrician Norwich, electrician Norfolk, rewire Norwich, EV charger Norwich, fuse board upgrade Norwich, electrical contractor Norwich">
+  <link rel="canonical" href="https://omelectricalsolutions.co.uk/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ElectricalContractor",
+    "name": "OM Electrical Solutions",
+    "description": "Professional electrician in Norwich offering rewires, fuse board upgrades, EV chargers, extra sockets and lighting across Norwich and Norfolk.",
+    "telephone": "07842492651",
+    "email": "Oliverlmorris@icloud.com",
+    "areaServed": ["Norwich", "Norfolk", "Wymondham", "Dereham", "Attleborough", "Aylsham"],
+    "address": { "@type": "PostalAddress", "addressLocality": "Norwich", "addressRegion": "Norfolk", "addressCountry": "GB" }
+  }
+  </script>
+
+  <style>
+    :root {
+      --teal:    #00D4A0;
+      --teal-md: #2a2a2a;
+      --teal-dk: #181818;
+      --teal-lt: rgba(0,212,160,0.1);
+      --teal-xlt: rgba(255,255,255,0.04);
+      --ink:     #FFFFFF;
+      --white:   #111111;
+      --bg:      #161616;
+      --text:    #FFFFFF;
+      --muted:   rgba(255,255,255,0.42);
+      --border:  rgba(255,255,255,0.08);
+      --wa:      #25D366;
+      --wa-dk:   #1DB954;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      font-size: 16px; line-height: 1.6;
+      color: var(--text); background: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Anim states ── */
+    .anim       { opacity: 0; transform: translateY(28px); }
+    .anim-left  { opacity: 0; transform: translateX(-24px); }
+    .anim-right { opacity: 0; transform: translateX(24px); }
+    @media (prefers-reduced-motion: reduce) {
+      .anim, .anim-left, .anim-right { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ── Layout ── */
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+    /* ══════════════════════════════
+       INTRO PRELOADER
+    ══════════════════════════════ */
+    #intro {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #000;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 20px;
+      pointer-events: all;
+      transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), visibility 0.6s;
+    }
+    #intro.out {
+      opacity: 0; visibility: hidden; pointer-events: none;
+    }
+    #intro-logo {
+      height: 72px; width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0; transform: translateY(12px);
+      animation: introLogoIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s forwards;
+    }
+    #intro-line {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      opacity: 0;
+      animation: introLineIn 0.6s cubic-bezier(0.22,1,0.36,1) 0.75s forwards;
+    }
+    #intro-bar {
+      width: 0; height: 1px;
+      background: var(--teal);
+      animation: introBarIn 1.1s cubic-bezier(0.22,1,0.36,1) 0.4s forwards;
+    }
+    @keyframes introLogoIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes introLineIn {
+      to { opacity: 1; }
+    }
+    @keyframes introBarIn {
+      to { width: 120px; }
+    }
+
+    /* ══════════════════════════════
+       NAV
+    ══════════════════════════════ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 16px 32px;
+    }
+    .nav__inner {
+      max-width: 1120px; margin: 0 auto;
+    }
+    .nav__pill {
+      display: flex; align-items: center;
+      height: 62px;
+      padding: 6px 16px 6px 6px;
+      border-radius: 14px;
+      background: transparent;
+      border: 1px solid transparent;
+      transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
+    }
+    .nav.scrolled .nav__pill {
+      background: rgba(8,8,8,0.84);
+      backdrop-filter: blur(40px) saturate(160%);
+      -webkit-backdrop-filter: blur(40px) saturate(160%);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+    }
+    /* Left links */
+    .nav__links {
+      display: flex; gap: 2px; list-style: none; flex: 1;
+      justify-content: flex-end; padding-right: 16px;
+    }
+    .nav__links a {
+      display: inline-flex; align-items: center;
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.55);
+      text-decoration: none; letter-spacing: -0.01em;
+      padding: 8px 16px; border-radius: 12px;
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    .nav__links a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .nav__logo-wrap {
+      display: inline-flex; align-items: center; flex-shrink: 0;
+      text-decoration: none; padding: 0 18px;
+    }
+    .nav__logo {
+      height: 40px; width: auto; display: block;
+      filter: brightness(0) invert(1);
+    }
+    /* Right links */
+    .nav__links--right {
+      justify-content: flex-end;
+    }
+    /* Action buttons */
+    .nav__actions {
+      display: flex; align-items: center; gap: 6px; margin-left: 8px; flex-shrink: 0;
+    }
+    .nav__action {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
+      text-decoration: none; transition: opacity 0.18s, transform 0.18s;
+    }
+    .nav__action:hover { opacity: 0.85; transform: translateY(-1px); }
+    .nav__action svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .nav__action--teal {
+      background: #ffffff; color: #0A0A0A;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    .nav__action--dark {
+      background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ══════════════════════════════
+       BUTTONS
+    ══════════════════════════════ */
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-family: inherit; font-weight: 600; text-decoration: none;
+      border-radius: 8px; border: none; cursor: pointer;
+      transition: all 0.18s cubic-bezier(0.22,1,0.36,1);
+      white-space: nowrap; letter-spacing: -0.01em;
+    }
+
+    .btn--primary {
+      background: var(--teal); color: #fff;
+      font-size: 15px; padding: 14px 26px;
+      box-shadow: 0 4px 18px rgba(17,157,164,0.35);
+    }
+    .btn--primary:hover { background: var(--teal-md); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(17,157,164,0.4); }
+
+    .btn--ghost-lt {
+      background: rgba(255,255,255,0.1); color: #fff;
+      font-size: 15px; padding: 13px 24px;
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+    .btn--ghost-lt:hover { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.55); }
+
+    .btn--wa {
+      background: var(--wa); color: #fff;
+      font-size: 14px; padding: 11px 18px;
+      box-shadow: 0 3px 12px rgba(37,211,102,0.28);
+    }
+    .btn--wa svg { width: 16px; height: 16px; fill: #fff; }
+    .btn--wa:hover { background: var(--wa-dk); transform: translateY(-1px); }
+
+    .btn--wa-lg {
+      background: var(--wa); color: #fff;
+      font-size: 16px; padding: 16px 30px;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.32);
+    }
+    .btn--wa-lg svg { width: 20px; height: 20px; fill: #fff; }
+    .btn--wa-lg:hover { background: var(--wa-dk); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(37,211,102,0.42); }
+
+    .link-arrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 600; color: var(--teal);
+      text-decoration: none; letter-spacing: -0.01em;
+      transition: gap 0.18s, color 0.15s;
+    }
+    .link-arrow:hover { color: #ffffff; gap: 10px; }
+    .link-arrow svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    .hero {
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .hero__bg--placeholder {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero__bg-img {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: 65% center; background-repeat: no-repeat;
+      transition: opacity 0.9s ease;
+    }
+    .hero__bg-img--on {
+      background-image: url('assets/img/hf_20260622_143823_f214de87-53f8-4e23-9d84-10447032c672.png');
+      opacity: 1; z-index: 1;
+    }
+    .hero__bg-img--off {
+      background-image: url('assets/img/hf_20260622_151918_1fd27f83-aec1-4554-97aa-39d476340ac1.png');
+      opacity: 0; z-index: 2;
+    }
+    .hero.lights-off .hero__bg-img--on { opacity: 0; }
+    .hero.lights-off .hero__bg-img--off { opacity: 1; }
+    /* Light toggle */
+    .hero__lights-toggle {
+      position: absolute; bottom: 32px; right: 32px; z-index: 10;
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 100px; padding: 8px 14px 8px 10px;
+      cursor: pointer; user-select: none;
+      transition: background 0.2s;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+    .hero__lights-toggle:hover { background: rgba(255,255,255,0.14); }
+    .hero__lights-switch {
+      width: 32px; height: 18px; border-radius: 100px;
+      background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.25);
+      position: relative; transition: background 0.3s;
+      flex-shrink: 0;
+    }
+    .hero__lights-switch::after {
+      content: ''; position: absolute; top: 2px; left: 2px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .hero.lights-off .hero__lights-switch { background: rgba(255,255,255,0.15); }
+    .hero.lights-off .hero__lights-switch::after { transform: translateX(14px); background: rgba(255,255,255,0.5); }
+    .hero__lights-label {
+      font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.75);
+      letter-spacing: 0.02em; white-space: nowrap;
+    }
+    .hero__lights-icon {
+      width: 14px; height: 14px; flex-shrink: 0;
+      stroke: rgba(255,255,255,0.75); fill: none; stroke-width: 2;
+      stroke-linecap: round; stroke-linejoin: round;
+      transition: stroke 0.3s;
+    }
+    .hero.lights-off .hero__lights-icon { stroke: rgba(255,255,255,0.35); }
+    .hero__inner {
+      position: relative; z-index: 4;
+      max-width: 1120px; width: 100%;
+      margin: 0 auto; padding: 0 28px;
+      flex: 1; display: flex; align-items: center;
+    }
+    .hero__text { max-width: 620px; }
+    .hero__logo { height: 100px; width: auto; display: block; filter: brightness(0) invert(1); margin-bottom: 36px; opacity: 0.95; }
+    .hero__kicker {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 20px;
+    }
+    .hero__kicker-line { width: 32px; height: 1.5px; background: rgba(255,255,255,0.5); }
+    .hero__kicker-text {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.6);
+    }
+    .hero h1 {
+      font-size: clamp(38px, 5.5vw, 72px);
+      font-weight: 800; line-height: 1.08; letter-spacing: -0.02em;
+      color: #ffffff; margin-bottom: 24px;
+    }
+    .hero__sub {
+      font-size: 17px; font-weight: 400; line-height: 1.7;
+      color: rgba(255,255,255,0.75); max-width: 420px; margin-bottom: 40px;
+    }
+    .hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 0; }
+    .btn--hero-primary {
+      background: var(--teal); color: #0a0a0a;
+      font-size: 15px; font-weight: 700; padding: 15px 30px;
+      border-radius: 10px; border: none;
+      letter-spacing: -0.01em;
+      box-shadow: 0 0 0 0 rgba(0,212,160,0);
+      transition: background 0.18s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn--hero-primary:hover { background: #00e5ae; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,212,160,0.35); }
+    .btn--hero-text {
+      background: rgba(255,255,255,0.08); color: #ffffff;
+      font-size: 15px; font-weight: 600; padding: 15px 24px;
+      border-radius: 10px; border: 1px solid rgba(255,255,255,0.18);
+      display: inline-flex; align-items: center; gap: 7px;
+      letter-spacing: -0.01em;
+      transition: background 0.18s, border-color 0.18s, gap 0.18s;
+    }
+    .btn--hero-text svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.18s; }
+    .btn--hero-text:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); }
+    .btn--hero-text:hover svg { transform: translateX(3px); }
+    @keyframes scrollpulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+    /* ══════════════════════════════
+       TRUST STRIP
+    ══════════════════════════════ */
+    .trust {
+      background: #0a0a0a;
+      padding: 0 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .trust__inner {
+      max-width: 1120px; margin: 0 auto;
+      display: flex; align-items: stretch; flex-wrap: wrap;
+    }
+    .trust__item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 18px 28px 18px 0;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      border-right: 1px solid rgba(255,255,255,0.07);
+      margin-right: 28px;
+    }
+    .trust__item:last-child { border-right: none; margin-right: 0; }
+    .trust__item svg { width: 14px; height: 14px; stroke: rgba(255,255,255,0.3); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .trust__stars {
+      display: flex; align-items: center; gap: 10px;
+      padding: 18px 28px 18px 0; margin-right: 28px;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .trust__star-row { display: flex; gap: 2px; }
+    .trust__star-row svg { width: 12px; height: 12px; fill: #FFD060; }
+    .trust__star-label { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+    .trust__star-sub { font-size: 10px; color: rgba(255,255,255,0.28); margin-top: 2px; }
+
+    /* ══════════════════════════════
+       SECTION CHROME
+    ══════════════════════════════ */
+    .section { padding: 100px 28px; }
+    .section--bg { background: var(--bg); }
+    .section--dark { background: var(--teal-dk); }
+    .section--teal { background: var(--teal-md); }
+
+    .eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--teal);
+      display: block; margin-bottom: 16px;
+      opacity: 0.85;
+    }
+    .eyebrow--lt { color: rgba(255,255,255,0.45); }
+    .eyebrow--tl { color: rgba(255,255,255,0.5); }
+
+    h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; letter-spacing: -0.02em; }
+
+    h2.h2 {
+      font-size: clamp(36px, 4.5vw, 58px);
+      font-weight: 400; letter-spacing: 0.04em; line-height: 1.0;
+      color: var(--ink); margin-bottom: 14px;
+    }
+    h2.h2--lt { color: #ffffff; }
+    .lead { font-size: 17px; line-height: 1.72; color: rgba(255,255,255,0.75); max-width: 500px; }
+    .lead--lt { color: rgba(255,255,255,0.6); }
+    .section-intro { margin-bottom: 64px; text-align: center; }
+
+    /* ══════════════════════════════
+       SERVICES GRID
+    ══════════════════════════════ */
+    .svc-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      counter-reset: svc-counter;
+    }
+    .svc-card {
+      background: transparent; padding: 40px 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-right: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.25s;
+      cursor: default;
+      position: relative; overflow: hidden;
+      counter-increment: svc-counter;
+    }
+    .svc-card::after {
+      content: '0' counter(svc-counter);
+      position: absolute; bottom: 16px; right: 20px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 72px; line-height: 1;
+      color: rgba(255,255,255,0.04);
+      pointer-events: none; user-select: none;
+      letter-spacing: 0.02em;
+    }
+    .svc-card:nth-child(3n) { border-right: none; }
+    .svc-card:nth-last-child(-n+3) { border-bottom: none; }
+    .svc-card:hover { background: rgba(255,255,255,0.035); }
+    .svc-card__icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--teal-lt); margin-bottom: 22px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .svc-card__icon svg { width: 22px; height: 22px; stroke: var(--teal-md); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .svc-card__tag {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--teal-md); background: var(--teal-lt);
+      padding: 3px 8px; border-radius: 4px; margin-bottom: 14px;
+    }
+    .svc-card h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 10px; }
+    .svc-card p { font-size: 14px; line-height: 1.68; color: var(--muted); margin-bottom: 20px; }
+
+    /* ══════════════════════════════
+       SERVICE SCROLL CAROUSEL
+    ══════════════════════════════ */
+    .svc-scroll-section { height: 500vh; position: relative; overflow-x: clip; }
+    .svc-scroll-sticky {
+      position: sticky; top: 0; height: 100vh;
+      overflow: hidden; background: var(--bg);
+    }
+    .svc-scroll-hdr {
+      position: absolute; top: 40px; left: 50%;
+      transform: translateX(-50%);
+      width: 100%; max-width: 1176px;
+      padding: 0 max(28px, calc((100vw - 1120px) / 2));
+      display: flex; align-items: center; justify-content: space-between;
+      z-index: 2; pointer-events: none;
+    }
+    .svc-scroll-count {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.35);
+    }
+    .svc-scroll-count .cur { color: var(--teal); }
+    .svc-scroll-track { display: flex; height: 100%; will-change: transform; }
+    .svc-scroll-card {
+      min-width: 100vw; height: 100%;
+      display: flex; align-items: center; flex-shrink: 0;
+    }
+    .svc-scroll-inner {
+      width: 100%;
+      padding: 0 max(28px, calc((100vw - 1120px) / 2));
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .svc-scroll-left { padding-top: 40px; }
+    .svc-scroll-right { display: flex; align-items: center; justify-content: center; }
+    .svc-scroll-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(140px, 20vw, 280px);
+      font-weight: 800; color: rgba(255,255,255,0.04);
+      line-height: 1; letter-spacing: -0.04em;
+      user-select: none; pointer-events: none;
+    }
+    .svc-scroll-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: rgba(0,212,160,0.1);
+      border: 1px solid rgba(0,212,160,0.12);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+    }
+    .svc-scroll-icon svg { width: 22px; height: 22px; stroke: var(--teal); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .svc-scroll-stag {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--teal); background: rgba(0,212,160,0.08);
+      border: 1px solid rgba(0,212,160,0.15);
+      border-radius: 4px; padding: 4px 10px; margin-bottom: 20px;
+    }
+    .svc-scroll-h {
+      font-size: clamp(36px, 5vw, 60px); font-weight: 800;
+      color: #ffffff; line-height: 1.06;
+      letter-spacing: -0.02em; margin-bottom: 18px;
+    }
+    .svc-scroll-p {
+      font-size: 17px; line-height: 1.72;
+      color: rgba(255,255,255,0.5);
+      max-width: 440px; margin-bottom: 36px;
+    }
+    .svc-scroll-dots {
+      position: absolute; bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 2;
+    }
+    .svc-scroll-dot {
+      width: 6px; height: 6px; border-radius: 3px;
+      background: rgba(255,255,255,0.18);
+      transition: width 0.3s ease, background 0.3s ease;
+    }
+    .svc-scroll-dot.active { width: 24px; background: var(--teal); }
+    @media (max-width: 1024px) {
+      .svc-scroll-inner { grid-template-columns: 1fr; gap: 0; }
+      .svc-scroll-right { display: none; }
+    }
+    @media (max-width: 768px) {
+      .svc-scroll-section { height: auto; overflow: visible; }
+      .svc-scroll-sticky { position: relative; height: auto; overflow: visible; }
+      .svc-scroll-track { flex-direction: column; transform: none !important; }
+      .svc-scroll-card { min-width: 100%; height: auto; padding: 72px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .svc-scroll-card:last-child { border-bottom: none; }
+      .svc-scroll-hdr { position: relative; top: auto; left: auto; transform: none; padding: 40px max(28px, calc((100vw - 1120px) / 2)) 0; }
+      .svc-scroll-left { padding-top: 0; }
+      .svc-scroll-dots { display: none; }
+    }
+
+    /* ══════════════════════════════
+       SPLIT SECTION (Beams & Braces style)
+    ══════════════════════════════ */
+    .map-scroll-outer { height: calc(100vh - 60px + 400vh); position: relative; overflow-x: clip; }
+    .map-cta-wrapper { position: sticky; top: 60px; height: calc(100vh - 60px); display: flex; flex-direction: column; overflow: hidden; }
+    .map-scroll-sticky { height: min(66vh, 580px); flex-shrink: 0; overflow: hidden; background: var(--bg); }
+    .map-scroll-sticky .split { height: 100%; min-height: unset; width: 100%; }
+    .map-scroll-sticky .split__img { height: 100%; }
+    .map-scroll-sticky .split__content { padding-top: 48px; padding-bottom: 48px; }
+    .map-cta-connected { flex: 1; background: #0a0a0a; display: flex; align-items: center; justify-content: center; border-top: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden; }
+    .map-cta-connected__bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 80%, rgba(0,212,160,0.06) 0%, transparent 65%); pointer-events: none; }
+    .map-cta-connected__inner { position: relative; z-index: 1; text-align: center; padding: 24px 28px 56px; }
+    .map-cta-connected__inner .eyebrow { display: block; margin-bottom: 12px; }
+    .map-cta-connected__inner h2 { font-size: clamp(24px, 3vw, 40px); font-weight: 800; letter-spacing: -0.02em; color: #fff; margin-bottom: 28px; line-height: 1.1; }
+    .map-cta-connected__btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; }
+    .split--rev { direction: rtl; }
+    .split--rev > * { direction: ltr; }
+    .split__img {
+      position: relative; overflow: hidden;
+      background: var(--teal-lt);
+    }
+    .split__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .split__img-ph {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+      background: rgba(255,255,255,0.018);
+    }
+    .split__img-ph svg { width: 28px; height: 28px; stroke: rgba(255,255,255,0.15); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .split__img-ph span { font-size: 10px; color: rgba(255,255,255,0.2); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+    .split__content {
+      display: flex; align-items: center;
+      padding: 96px 64px;
+    }
+    /* About: content is RIGHT column — push inner edge inward from right */
+    .split:not(.split--rev) .split__content {
+      padding-right: max(64px, calc((100vw - 1120px) / 2));
+    }
+    /* Coverage: content is LEFT column (rtl reverses order) — push inner edge inward from left */
+    .split--rev .split__content {
+      padding-left: max(64px, calc((100vw - 1120px) / 2));
+    }
+    .split__content-inner { max-width: 440px; }
+    .split__content--dark { background: var(--teal-dk); }
+    .split__content--bg { background: var(--bg); }
+
+    /* ══════════════════════════════
+       STATS ROW
+    ══════════════════════════════ */
+    .stats-row {
+      padding: 16px max(28px, calc((100vw - 1120px) / 2));
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-row-inner {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.02);
+    }
+    .stat-cell {
+      padding: 18px 20px; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-num {
+      font-size: clamp(22px, 2.6vw, 34px); font-weight: 700;
+      letter-spacing: -0.01em; color: var(--teal); line-height: 1;
+    }
+    .stat-label {
+      font-size: 10.5px; font-weight: 600; letter-spacing: 0.09em;
+      text-transform: uppercase; color: rgba(255,255,255,0.28); margin-top: 7px;
+    }
+
+    /* ══════════════════════════════
+       PROCESS STEPS
+    ══════════════════════════════ */
+    .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; position: relative; }
+    .steps::before {
+      content: ''; position: absolute;
+      top: 20px; left: calc(100%/6); right: calc(100%/6);
+      height: 1px; background: rgba(255,255,255,0.1);
+    }
+    .step {
+      padding: 0 36px; text-align: center; position: relative; z-index: 1;
+    }
+    .step__num {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.75);
+      margin: 0 auto 28px;
+      box-shadow: 0 0 0 6px #1e1e1e;
+      transition: background 0.22s, border-color 0.22s, color 0.22s;
+    }
+    .step:hover .step__num { background: var(--teal); border-color: var(--teal); color: #0a0a0a; }
+    .step h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 10px; }
+    .step p { font-size: 14px; line-height: 1.68; color: var(--muted); }
+
+    /* ══════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════ */
+    .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .review-card {
+      background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 32px;
+      transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+    }
+    .review-card:hover {
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+      border-color: rgba(255,255,255,0.14);
+      transform: translateY(-4px);
+    }
+    .review-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .review-stars svg { width: 14px; height: 14px; fill: #FFD060; }
+    .review-body { font-size: 14px; line-height: 1.7; color: var(--text); margin-bottom: 20px; font-style: italic; }
+    .review-author { display: flex; align-items: center; gap: 10px; }
+    .review-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(0,212,160,0.12);
+      border: 1px solid rgba(0,212,160,0.2);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.04em; color: var(--teal);
+    }
+    .review-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+    .review-loc { font-size: 12px; color: var(--muted); }
+
+    /* ══════════════════════════════
+       GALLERY
+    ══════════════════════════════ */
+    .gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .gallery__item {
+      border-radius: 10px; overflow: hidden;
+      background: var(--teal-lt); aspect-ratio: 4/3; position: relative;
+      transition: transform 0.28s cubic-bezier(0.22,1,0.36,1);
+    }
+    .gallery__item:first-child { grid-column: span 2; aspect-ratio: 16/9; }
+    .gallery__item:hover { transform: scale(1.02); }
+    .gallery__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery__ph {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+      background: rgba(255,255,255,0.02);
+      border: 1px dashed rgba(255,255,255,0.08);
+      border-radius: 10px;
+    }
+    .gallery__ph svg { width: 20px; height: 20px; stroke: rgba(255,255,255,0.18); fill: none; stroke-width: 1.5; }
+    .gallery__ph span { font-size: 10px; color: rgba(255,255,255,0.22); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ══════════════════════════════
+       AREA MAP SECTION
+    ══════════════════════════════ */
+    .map-section {
+      background: #0d0d0d;
+      padding: 88px 0 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .map-section__hdr {
+      max-width: 1120px; margin: 0 auto;
+      padding: 0 max(28px, calc((100vw - 1120px) / 2));
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: end;
+      margin-bottom: 52px;
+    }
+    .map-section__sub {
+      font-size: 16px; line-height: 1.72;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 28px;
+    }
+    .map-chips { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 36px; }
+    .map-chip {
+      padding: 7px 16px; border-radius: 100px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 12px; font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .map-chip:hover { border-color: var(--teal); color: var(--teal); }
+    .map-wrap {
+      position: relative; width: 100%;
+      aspect-ratio: 2336 / 1744;
+    }
+    .map-img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    .map-svg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    @media (max-width: 860px) {
+      .map-section__hdr { grid-template-columns: 1fr; gap: 28px; }
+    }
+    .area-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+    .area-chip {
+      padding: 8px 18px; border-radius: 100px;
+      background: var(--white); border: 1.5px solid var(--border);
+      font-size: 13px; font-weight: 500; color: var(--text);
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .area-chip:hover { border-color: var(--teal); color: var(--teal-dk); background: var(--teal-xlt); }
+
+    /* ══════════════════════════════
+       CTA SECTION — full-bleed dark
+    ══════════════════════════════ */
+    .cta-section {
+      position: relative; overflow: hidden;
+      background: #0a0a0a;
+      padding: 120px 28px; text-align: center;
+    }
+    .cta-section__bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(0,212,160,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cta-section__inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+    .cta-section h2 {
+      font-size: clamp(40px,5vw,68px); font-weight: 800;
+      letter-spacing: -0.02em; color: #ffffff; margin-bottom: 18px; line-height: 1.1;
+    }
+    .cta-section p { font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 44px; }
+    .cta-section__btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+    /* Contact panel */
+    .contact-panel {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 30px;
+    }
+    .contact-panel__label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 24px;
+    }
+    .contact-row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .contact-row svg { width: 15px; height: 15px; stroke: rgba(255,255,255,0.3); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .contact-row a { font-size: 14px; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.15s; }
+    .contact-row a:hover { color: var(--white); }
+    .contact-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin: 20px 0; }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    .footer {
+      background: var(--ink); border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 72px 28px 52px; text-align: center;
+    }
+    .footer__logo { height: 40px; width: auto; display: block; margin: 0 auto 24px; }
+    .footer__links { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 28px; margin-bottom: 20px; }
+    .footer__links a { font-size: 13px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.15s; }
+    .footer__links a:hover { color: rgba(255,255,255,0.7); }
+    .footer__copy { font-size: 12px; color: rgba(255,255,255,0.14); }
+
+    /* ══════════════════════════════
+       MOBILE STICKY CTA
+    ══════════════════════════════ */
+    .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 150; padding: 10px 16px 20px; background: linear-gradient(to top, rgba(15,31,34,0.98), transparent); }
+    .sticky-cta a { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--wa); color: #fff; font-family: inherit; font-size: 16px; font-weight: 700; padding: 16px; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 24px rgba(37,211,102,0.4); }
+    .sticky-cta a svg { width: 20px; height: 20px; fill: #fff; }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 1000px) {
+      .split { grid-template-columns: 1fr; min-height: auto; }
+      .split--rev { direction: ltr; }
+      .split__img { min-height: 360px; }
+      .split__content { padding: 56px 36px; }
+      .split__content-inner { max-width: 100%; }
+      .svc-grid { grid-template-columns: 1fr 1fr; }
+      .stats-row { grid-template-columns: repeat(2,1fr); }
+      .stat-cell:nth-child(2) { border-right: none; }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid .review-card:last-child { display: none; }
+    }
+    @media (max-width: 720px) {
+      .nav__links { display: none; }
+      .hero { min-height: 92vh; }
+      .section { padding: 72px 20px; }
+      .svc-grid { grid-template-columns: 1fr; border-radius: 10px; }
+      .steps { grid-template-columns: 1fr; gap: 40px; }
+      .steps::before { display: none; }
+      .step { text-align: left; display: flex; align-items: flex-start; gap: 18px; padding: 0; }
+      .step__num { margin: 0; flex-shrink: 0; }
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .gallery__item:first-child { grid-column: span 2; aspect-ratio: 4/3; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .reviews-grid .review-card:last-child { display: block; }
+      .hero__ctas { flex-direction: column; align-items: center; }
+      .cta-section__btns { flex-direction: column; align-items: center; }
+      .cta-section__btns > * { width: 100%; max-width: 320px; justify-content: center; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .trust__inner { gap: 0; }
+      .split__content { padding: 40px 24px; }
+      .sticky-cta { display: block; }
+      .slider-card { flex: 0 0 210px; }
+    }
+
+    /* ══════════════════════════════
+       LIGHTING SHOWCASE
+    ══════════════════════════════ */
+    .lighting-showcase { padding: 80px 0; background: var(--bg); overflow: hidden; position: relative; }
+    .lighting-showcase__header { padding: 0 28px; margin-bottom: 36px; position: relative; z-index: 1; }
+
+    /* Glow blobs */
+    .slider-glow { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+
+    @keyframes glowDrift {
+      0%   { transform: translate(0%, 0%) scale(1); }
+      25%  { transform: translate(22%, -20%) scale(1.25); }
+      50%  { transform: translate(40%, 10%) scale(0.85); }
+      75%  { transform: translate(15%, 25%) scale(1.1); }
+      100% { transform: translate(0%, 0%) scale(1); }
+    }
+    @keyframes glowDrift2 {
+      0%   { transform: translate(0%, 0%) scale(1.1); }
+      30%  { transform: translate(-30%, 18%) scale(0.8); }
+      60%  { transform: translate(-50%, -15%) scale(1.3); }
+      80%  { transform: translate(-20%, 20%) scale(0.95); }
+      100% { transform: translate(0%, 0%) scale(1.1); }
+    }
+    @keyframes glowDrift3 {
+      0%   { transform: translate(0%, 0%) scale(0.9); }
+      35%  { transform: translate(25%, -22%) scale(1.2); }
+      65%  { transform: translate(-20%, -18%) scale(1.0); }
+      100% { transform: translate(0%, 0%) scale(0.9); }
+    }
+
+    .glow-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(70px); mix-blend-mode: screen;
+    }
+    .glow-blob--1 {
+      width: 600px; height: 340px; top: 0%; left: 2%;
+      background: radial-gradient(ellipse, rgba(255,168,40,0.18) 0%, rgba(255,120,20,0.07) 50%, transparent 70%);
+      animation: glowDrift 11s ease-in-out infinite;
+    }
+    .glow-blob--2 {
+      width: 460px; height: 300px; top: 10%; right: 6%;
+      background: radial-gradient(ellipse, rgba(255,210,80,0.15) 0%, rgba(255,160,30,0.06) 50%, transparent 70%);
+      animation: glowDrift2 14s ease-in-out infinite;
+    }
+    .glow-blob--3 {
+      width: 380px; height: 240px; bottom: 0%; left: 35%;
+      background: radial-gradient(ellipse, rgba(255,150,20,0.14) 0%, rgba(255,100,10,0.05) 55%, transparent 70%);
+      animation: glowDrift3 9s ease-in-out infinite 1.5s;
+    }
+    /* ══════════════════════════════
+       LED PANEL — raised sections
+    ══════════════════════════════ */
+    .section--led { padding: 40px 28px 60px; background: var(--white); }
+    .led-panel {
+      background: #1e1e1e;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 60px 56px;
+      position: relative;
+    }
+    @media (max-width: 720px) {
+      .section--led { padding: 24px 16px 40px; }
+      .led-panel { padding: 36px 24px; border-radius: 16px; }
+    }
+
+    .lighting-showcase__hint {
+      font-size: 14px; color: var(--muted); margin-top: 10px;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .lighting-showcase__hint svg {
+      width: 15px; height: 15px; stroke: var(--muted); fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0;
+    }
+
+    .slider-row {
+      display: flex; gap: 16px;
+      padding: 4px 28px 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      justify-content: center;
+      position: relative; z-index: 1;
+    }
+    .slider-row::-webkit-scrollbar { display: none; }
+
+    .slider-card { flex: 0 0 260px; scroll-snap-align: start; }
+
+    .slider-wrap {
+      position: relative; aspect-ratio: 3/4;
+      border-radius: 14px; overflow: hidden;
+      cursor: ew-resize; user-select: none; -webkit-user-select: none;
+      background: #0a0a0a;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.14), 0 0 0 1px var(--border);
+    }
+
+    .slider-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      pointer-events: none; display: block; -webkit-user-drag: none;
+    }
+
+    .slider-img--on { clip-path: inset(0 50% 0 0); }
+
+    .slider-divider {
+      position: absolute; top: 0; bottom: 0; left: 50%;
+      width: 2px; background: rgba(255,255,255,0.95);
+      transform: translateX(-50%); pointer-events: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .slider-btn {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slider-btn svg {
+      width: 14px; height: 14px; stroke: #111; fill: none;
+      stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .slider-labels {
+      display: flex; justify-content: space-between;
+      padding: 9px 2px 0;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .slider-labels span:last-child { color: var(--teal); }
+
+    /* ══════════════════════════════
+       DARK THEME COMPONENT OVERRIDES
+    ══════════════════════════════ */
+    .footer { background: #0a0a0a; }
+    .svc-card__icon svg { stroke: var(--teal); }
+    .svc-card__tag { color: var(--teal); background: rgba(0,212,160,0.08); }
+    .stat-num { color: var(--ink); }
+    .area-chip:hover { color: var(--ink); }
+    .contact-row a:hover { color: #fff; }
+    .btn--primary { box-shadow: none; }
+    .btn--primary:hover { background: #00e5ae; box-shadow: 0 6px 24px rgba(0,212,160,0.28); }
+    .lead { color: rgba(255,255,255,0.7); }
+    .review-body { color: rgba(255,255,255,0.75); font-style: normal; }
+    .sticky-cta { background: linear-gradient(to top, rgba(10,10,10,0.97) 0%, transparent 100%); }
+    .lighting-showcase__header { max-width: 1120px; margin: 0 auto; padding: 0 28px 36px; }
+
+    /* ══════════════════════════════
+       HERO GHOST TEXT
+    ══════════════════════════════ */
+    .hero__overlay {
+      position: absolute; inset: 0; z-index: 3;
+      background:
+        linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.82) 38%, rgba(0,0,0,0.3) 62%, rgba(0,0,0,0.05) 100%),
+        linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, transparent 18%),
+        linear-gradient(to top, #111111 0%, transparent 22%);
+      pointer-events: none;
+    }
+    .hero__ghost {
+      position: absolute;
+      top: 12%; right: 4%;
+      z-index: 4;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(72px, 10.5vw, 148px);
+      font-weight: 400; line-height: 1.0;
+      letter-spacing: 0.03em;
+      color: rgba(255,255,255,0.13);
+      text-align: right;
+      pointer-events: none; user-select: none;
+    }
+    @media (max-width: 720px) { .hero__ghost { display: none; } }
+
+    /* ══════════════════════════════
+       CUSTOM CURSOR
+    ══════════════════════════════ */
+    @media (pointer: fine) {
+      * { cursor: none !important; }
+      .cursor {
+        position: fixed;
+        width: 32px; height: 32px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 99999;
+        top: 0; left: 0;
+        transform: translate(-50%, -50%);
+        background: rgba(0,212,160,0.1);
+        border: 1px solid rgba(0,212,160,0.5);
+        box-shadow:
+          0 0 10px  rgba(0,212,160,0.5),
+          0 0 28px  rgba(0,212,160,0.25),
+          0 0 60px  rgba(0,212,160,0.12);
+        mix-blend-mode: screen;
+        will-change: left, top;
+        transition: width 0.2s cubic-bezier(0.22,1,0.36,1),
+                    height 0.2s cubic-bezier(0.22,1,0.36,1),
+                    background 0.2s ease,
+                    box-shadow 0.2s ease,
+                    opacity 0.4s ease;
+        opacity: 0;
+      }
+      .cursor.active { opacity: 1; }
+      .cursor.hovered {
+        width: 54px; height: 54px;
+        background: rgba(0,212,160,0.15);
+        box-shadow:
+          0 0 18px  rgba(0,212,160,0.6),
+          0 0 44px  rgba(0,212,160,0.3),
+          0 0 90px  rgba(0,212,160,0.15);
+      }
+      .cursor.clicking {
+        width: 22px; height: 22px;
+        background: rgba(0,212,160,0.28);
+      }
+      .cursor.on-light {
+        background: rgba(0,0,0,0.06);
+        border-color: rgba(0,0,0,0.3);
+        box-shadow: none;
+        mix-blend-mode: multiply;
+      }
+    }
+    @media (pointer: coarse) { .cursor { display: none; } }
+
+    /* ══════════════════════════════
+       MARQUEE STRIP
+    ══════════════════════════════ */
+    .marquee-strip {
+      background: #0a0a0a;
+      padding: 20px 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item {
+      display: flex; align-items: center; gap: 20px;
+      padding: 0 32px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .marquee-item:hover { color: rgba(255,255,255,0.85); }
+    .marquee-dot {
+      display: inline-block;
+      width: 5px; height: 5px;
+      background: var(--teal);
+      border-radius: 50%;
+      opacity: 0.55;
+      font-size: 0;
+      flex-shrink: 0;
+    }
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ══════════════════════════════
+       EDITORIAL STATEMENT
+    ══════════════════════════════ */
+    .statement-section {
+      background: #ffffff;
+      padding: 112px 28px;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .statement-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .statement-eyebrow {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 20px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(0,0,0,0.3);
+    }
+    .statement-eyebrow-line { width: 24px; height: 1px; background: rgba(0,0,0,0.15); flex-shrink: 0; }
+    .statement-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(30px, 3.6vw, 48px);
+      font-weight: 800; line-height: 1.12;
+      letter-spacing: -0.02em; color: #0a0a0a;
+      margin-bottom: 28px;
+    }
+    .statement-chips {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .statement-chip {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 14px;
+      background: #f5f5f5;
+      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 100px;
+      font-size: 12px; font-weight: 600;
+      color: rgba(0,0,0,0.55);
+      white-space: nowrap;
+    }
+    .statement-chip svg { width: 12px; height: 12px; stroke: var(--teal); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+    .statement-right {
+      display: flex; flex-direction: column; gap: 28px;
+    }
+    .statement-body {
+      font-size: 17px; line-height: 1.78;
+      color: rgba(0,0,0,0.5);
+      margin: 0;
+    }
+    .statement-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 700;
+      color: #0a0a0a;
+      text-decoration: none;
+      transition: color 0.18s, gap 0.18s;
+    }
+    .statement-link svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .statement-link:hover { color: var(--teal); gap: 13px; }
+    @media (max-width: 860px) {
+      .statement-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ══════════════════════════════
+       PULL QUOTE
+    ══════════════════════════════ */
+    .pull-quote-section {
+      background: #0a0a0a;
+      padding: 128px 28px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .pull-quote-inner {
+      max-width: 900px; margin: 0 auto; text-align: center;
+    }
+    .pull-quote-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(34px, 4.8vw, 62px);
+      font-weight: 400; letter-spacing: 0.03em; line-height: 1.12;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 44px;
+    }
+    .pull-quote-text::before { content: '\201C'; color: var(--teal); margin-right: 4px; }
+    .pull-quote-text::after  { content: '\201D'; color: var(--teal); margin-left: 4px; }
+    .pull-quote-attribution {
+      display: flex; align-items: center; justify-content: center; gap: 16px;
+    }
+    .pull-quote-dash { width: 28px; height: 1px; background: rgba(255,255,255,0.14); flex-shrink: 0; }
+    .pull-quote-name { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+    .pull-quote-loc  { font-size: 12px; color: rgba(255,255,255,0.28); letter-spacing: 0.04em; }
+
+  </style>
+</head>
+<body>
+
+<!-- INTRO PRELOADER -->
+<div id="intro">
+  <img id="intro-logo" src="assets/img/OMLogo.png" alt="OM Electrical Solutions">
+  <div id="intro-bar"></div>
+  <span id="intro-line">Electrician in Norwich &amp; Norfolk</span>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <div class="nav__pill">
+      <!-- Logo left -->
+      <a href="#" class="nav__logo-wrap">
+        <img src="assets/img/OMLogo.png" alt="OM Electrical Solutions" class="nav__logo">
+      </a>
+      <!-- Links -->
+      <ul class="nav__links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#area">Areas</a></li>
+      </ul>
+      <!-- Icon action buttons -->
+      <div class="nav__actions">
+        <a href="tel:07842492651" class="nav__action nav__action--dark" aria-label="Call us">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.04z"/></svg>
+        </a>
+        <a href="https://wa.me/447842492651" class="nav__action nav__action--teal" target="_blank" rel="noopener" aria-label="Free quote on WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero__bg--placeholder">
+    <div class="hero__bg-img hero__bg-img--on"></div>
+    <div class="hero__bg-img hero__bg-img--off"></div>
+  </div>
+  <div class="hero__overlay"></div>
+  <button class="hero__lights-toggle" id="lightsToggle" aria-label="Toggle lights">
+    <svg class="hero__lights-icon" viewBox="0 0 24 24"><path d="M15 14a5 5 0 1 0-6 0"/><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/></svg>
+    <span class="hero__lights-switch"></span>
+    <span class="hero__lights-label" id="lightsLabel">Lights on</span>
+  </button>
+
+
+  <div class="hero__inner">
+    <div class="hero__text">
+      <div class="hero__kicker anim">
+        <span class="hero__kicker-line"></span>
+        <span class="hero__kicker-text">Norwich &amp; Norfolk Electrician</span>
+      </div>
+      <h1 class="anim d1">We Handle<br>Your Electrics<br>Properly.</h1>
+      <p class="hero__sub anim d2">Full rewires, fuse board upgrades, EV chargers and more. Professional electrical work you can trust, across Norwich and Norfolk.</p>
+      <div class="hero__ctas anim d3">
+        <a href="https://wa.me/447842492651" class="btn btn--hero-primary" target="_blank" rel="noopener">Get a free quote</a>
+        <a href="#work" class="btn--hero-text">See our work <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-item">FULL REWIRES<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">FUSE BOARD UPGRADES<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">EV CHARGER INSTALLATION<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">EXTRA SOCKETS<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">KITCHEN REFURBS<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">LIGHTING CHANGES<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">NORWICH &amp; NORFOLK<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">FULL REWIRES<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">FUSE BOARD UPGRADES<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">EV CHARGER INSTALLATION<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">EXTRA SOCKETS<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">KITCHEN REFURBS<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">LIGHTING CHANGES<span class="marquee-dot">◆</span></div>
+    <div class="marquee-item">NORWICH &amp; NORFOLK<span class="marquee-dot">◆</span></div>
+  </div>
+</div>
+
+<!-- LIGHTING SHOWCASE -->
+<section class="lighting-showcase">
+  <div class="slider-glow" aria-hidden="true">
+    <div class="glow-blob glow-blob--1"></div>
+    <div class="glow-blob glow-blob--2"></div>
+    <div class="glow-blob glow-blob--3"></div>
+  </div>
+  <div class="lighting-showcase__header">
+    <span class="eyebrow">Our Work</span>
+    <h2 class="h2">Lights On Or Off: Your Choice</h2>
+    <p class="lighting-showcase__hint">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Drag the slider left or right to switch the lights on and off
+    </p>
+  </div>
+  <div class="slider-row">
+
+    <div class="slider-card">
+      <div class="slider-wrap" data-slider>
+        <img src="assets/img/OMES/OFF 1.png" class="slider-img slider-img--off" alt="Room with lights off">
+        <img src="assets/img/OMES/ON 1.jpeg" class="slider-img slider-img--on" alt="Room with lights on">
+        <div class="slider-divider">
+          <div class="slider-btn">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="slider-labels"><span>Off</span><span>On</span></div>
+    </div>
+
+    <div class="slider-card">
+      <div class="slider-wrap" data-slider>
+        <img src="assets/img/OMES/OFF 2.png" class="slider-img slider-img--off" alt="Room with lights off">
+        <img src="assets/img/OMES/ON 2.jpeg" class="slider-img slider-img--on" alt="Room with lights on">
+        <div class="slider-divider">
+          <div class="slider-btn">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="slider-labels"><span>Off</span><span>On</span></div>
+    </div>
+
+    <div class="slider-card">
+      <div class="slider-wrap" data-slider>
+        <img src="assets/img/OMES/OFF 3.png" class="slider-img slider-img--off" alt="Room with lights off">
+        <img src="assets/img/OMES/ON 3.jpeg" class="slider-img slider-img--on" alt="Room with lights on">
+        <div class="slider-divider">
+          <div class="slider-btn">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="slider-labels"><span>Off</span><span>On</span></div>
+    </div>
+
+    <div class="slider-card">
+      <div class="slider-wrap" data-slider>
+        <img src="assets/img/OMES/OFF 4.png" class="slider-img slider-img--off" alt="Room with lights off">
+        <img src="assets/img/OMES/ON 4.jpeg" class="slider-img slider-img--on" alt="Room with lights on">
+        <div class="slider-divider">
+          <div class="slider-btn">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="slider-labels"><span>Off</span><span>On</span></div>
+    </div>
+
+    <div class="slider-card">
+      <div class="slider-wrap" data-slider>
+        <img src="assets/img/OMES/OFF 5.png" class="slider-img slider-img--off" alt="Room with lights off">
+        <img src="assets/img/OMES/ON 5.jpeg" class="slider-img slider-img--on" alt="Room with lights on">
+        <div class="slider-divider">
+          <div class="slider-btn">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="slider-labels"><span>Off</span><span>On</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stats-row-inner">
+    <div class="stat-cell anim d1">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">On-time Completion</div>
+    </div>
+    <div class="stat-cell anim d2">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">Services Offered</div>
+    </div>
+    <div class="stat-cell anim d3">
+      <div class="stat-num">Norwich</div>
+      <div class="stat-label">&amp; Surrounding Norfolk</div>
+    </div>
+    <div class="stat-cell anim d4">
+      <div class="stat-num">Free</div>
+      <div class="stat-label">Quote via WhatsApp</div>
+    </div>
+  </div>
+</div>
+
+<!-- EDITORIAL STATEMENT -->
+<section class="statement-section">
+  <div class="statement-inner">
+    <div class="statement-left">
+      <div class="statement-eyebrow">
+        <span class="statement-eyebrow-line"></span>
+        Norwich &amp; Norfolk · Est. 2020
+      </div>
+      <h2 class="statement-heading anim">We Turn Up.<br>We Do It <span style="color:var(--teal)">Right.</span><br>We Leave It Tidy.</h2>
+      <div class="statement-chips anim d2">
+        <span class="statement-chip">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" style="fill:var(--teal);stroke:none"/></svg>
+          5.0 Google Reviews
+        </span>
+        <span class="statement-chip">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          18th Edition Certified
+        </span>
+        <span class="statement-chip">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          No Subcontractors
+        </span>
+      </div>
+    </div>
+    <div class="statement-right anim d3">
+      <p class="statement-body">No call centres. No subcontractors. Oliver handles every job personally, from the quote to the final test. That's how every customer gets the same high standard, every time.</p>
+      <a href="https://wa.me/447842492651" class="statement-link" target="_blank" rel="noopener">
+        Get a free quote
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="svc-scroll-section" id="services">
+  <div class="svc-scroll-sticky">
+    <div class="svc-scroll-hdr">
+      <span class="eyebrow">What We Do</span>
+      <div class="svc-scroll-count"><span class="cur">01</span>&thinsp;/&thinsp;06</div>
+    </div>
+
+    <div class="svc-scroll-track">
+
+      <!-- 01 Full Rewires -->
+      <div class="svc-scroll-card">
+        <div class="svc-scroll-inner">
+          <div class="svc-scroll-left">
+            <span class="svc-scroll-stag">Most Requested</span>
+            <div class="svc-scroll-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <h2 class="svc-scroll-h">Full Rewires</h2>
+            <p class="svc-scroll-p">Old or unsafe wiring replaced with a full modern electrical system. Done safely, done properly.</p>
+            <a href="#contact" class="link-arrow">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+          <div class="svc-scroll-right"><span class="svc-scroll-num">01</span></div>
+        </div>
+      </div>
+
+      <!-- 02 Fuse Board -->
+      <div class="svc-scroll-card">
+        <div class="svc-scroll-inner">
+          <div class="svc-scroll-left">
+            <div class="svc-scroll-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/></svg></div>
+            <h2 class="svc-scroll-h">Fuse Board Upgrades</h2>
+            <p class="svc-scroll-p">Modern consumer units with RCD protection. Required for house sales and essential for safety.</p>
+            <a href="#contact" class="link-arrow">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+          <div class="svc-scroll-right"><span class="svc-scroll-num">02</span></div>
+        </div>
+      </div>
+
+      <!-- 03 Extra Sockets -->
+      <div class="svc-scroll-card">
+        <div class="svc-scroll-inner">
+          <div class="svc-scroll-left">
+            <div class="svc-scroll-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg></div>
+            <h2 class="svc-scroll-h">Extra Sockets</h2>
+            <p class="svc-scroll-p">Additional plug points added neatly, with minimal disruption to your walls and décor.</p>
+            <a href="#contact" class="link-arrow">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+          <div class="svc-scroll-right"><span class="svc-scroll-num">03</span></div>
+        </div>
+      </div>
+
+      <!-- 04 EV Charger -->
+      <div class="svc-scroll-card">
+        <div class="svc-scroll-inner">
+          <div class="svc-scroll-left">
+            <span class="svc-scroll-stag">Growing Fast</span>
+            <div class="svc-scroll-icon"><svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><path d="M21 13v4a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2z"/></svg></div>
+            <h2 class="svc-scroll-h">EV Charger Installation</h2>
+            <p class="svc-scroll-p">Home EV chargers installed safely so your car is always charged and ready to go.</p>
+            <a href="#contact" class="link-arrow">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+          <div class="svc-scroll-right"><span class="svc-scroll-num">04</span></div>
+        </div>
+      </div>
+
+      <!-- 05 Kitchen Refurbs -->
+      <div class="svc-scroll-card">
+        <div class="svc-scroll-inner">
+          <div class="svc-scroll-left">
+            <div class="svc-scroll-icon"><svg viewBox="0 0 24 24"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M3 9V7a2 2 0 0 1 2-2h2V3h2v2h4V3h2v2h2a2 2 0 0 1 2 2v2"/></svg></div>
+            <h2 class="svc-scroll-h">Kitchen Refurbs</h2>
+            <p class="svc-scroll-p">Extra circuits, moved sockets, new appliance connections. We handle all the electrical works alongside your builders.</p>
+            <a href="#contact" class="link-arrow">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+          <div class="svc-scroll-right"><span class="svc-scroll-num">05</span></div>
+        </div>
+      </div>
+
+      <!-- 06 Lighting -->
+      <div class="svc-scroll-card">
+        <div class="svc-scroll-inner">
+          <div class="svc-scroll-left">
+            <div class="svc-scroll-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></div>
+            <h2 class="svc-scroll-h">Lighting Changes</h2>
+            <p class="svc-scroll-p">Downlights, pendants, full redesigns. All installed cleanly and safely.</p>
+            <a href="#contact" class="link-arrow">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+          <div class="svc-scroll-right"><span class="svc-scroll-num">06</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="svc-scroll-dots">
+      <div class="svc-scroll-dot active"></div>
+      <div class="svc-scroll-dot"></div>
+      <div class="svc-scroll-dot"></div>
+      <div class="svc-scroll-dot"></div>
+      <div class="svc-scroll-dot"></div>
+      <div class="svc-scroll-dot"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT — Why Choose Us -->
+<div class="split" id="about">
+  <div class="split__img anim-left" style="display:flex;align-items:center;justify-content:flex-end;background:transparent;padding:48px 40px 48px 0;">
+    <div style="width:34%;aspect-ratio:9/16;border-radius:14px;overflow:hidden;flex-shrink:0;position:relative;">
+      <img src="assets/img/OMES/butcher bhoy front.jpeg" alt="OM Electrical Solutions van outside Butcher Boy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;">
+    </div>
+  </div>
+  <div class="split__content split__content--bg anim-right">
+    <div class="split__content-inner">
+      <span class="eyebrow">About OM Electrical</span>
+      <h2 class="h2">Local, Reliable,<br>Professional.</h2>
+      <p class="lead" style="margin-bottom:40px;">OM Electrical Solutions is a Norwich-based contractor serving homeowners and builders across Norwich and Norfolk. Every job completed to the same high standard. No shortcuts.</p>
+      <a href="https://wa.me/447842492651" class="btn btn--primary" target="_blank" rel="noopener">Get in Touch</a>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-intro" style="text-align:center;max-width:560px;margin:0 auto 64px;">
+      <span class="eyebrow anim">How It Works</span>
+      <h2 class="h2 anim d1">Three Steps To Sorted</h2>
+      <p class="lead anim d2" style="margin:0 auto;">Getting your electrics fixed is straightforward.</p>
+    </div>
+    <div class="steps">
+      <div class="step anim d1">
+        <div class="step__num">1</div>
+        <div>
+          <h3>Message on WhatsApp</h3>
+          <p>Send a quick message describing what you need. No forms, no hassle. Just a direct reply from Oliver.</p>
+        </div>
+      </div>
+      <div class="step anim d2">
+        <div class="step__num">2</div>
+        <div>
+          <h3>Get a Free Quote</h3>
+          <p>A clear, honest price with no hidden costs. We arrange a time that works around you.</p>
+        </div>
+      </div>
+      <div class="step anim d3">
+        <div class="step__num">3</div>
+        <div>
+          <h3>Job Done Right</h3>
+          <p>We arrive on time, work to a high standard, and leave everything clean and tidy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-intro">
+      <span class="eyebrow anim">Customer Stories</span>
+      <h2 class="h2 anim d1">What Our Customers Say</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card anim d1">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-body">"Oliver was brilliant from start to finish. Arrived on time, kept us informed throughout and left the place spotless. Couldn't recommend more highly."</p>
+        <div class="review-author">
+          <div class="review-avatar">SJ</div>
+          <div>
+            <div class="review-name">Sarah J.</div>
+            <div class="review-loc">Norwich</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card anim d2">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-body">"Had our fuse board replaced and a couple of new sockets added. Competitive price, excellent quality work, and a genuinely nice guy. Will definitely use again."</p>
+        <div class="review-author">
+          <div class="review-avatar">MT</div>
+          <div>
+            <div class="review-name">Mark T.</div>
+            <div class="review-loc">Wymondham</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card anim d3">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="review-body">"Got our EV charger installed with no fuss at all. Oliver sorted everything quickly, explained what he was doing and the price was exactly as quoted. Brilliant service."</p>
+        <div class="review-author">
+          <div class="review-avatar">RH</div>
+          <div>
+            <div class="review-name">Rachel H.</div>
+            <div class="review-loc">Dereham</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT — Coverage Area + CTA (combined sticky unit) -->
+<div class="map-scroll-outer" id="area">
+<div class="map-cta-wrapper">
+
+  <!-- MAP -->
+  <div class="map-scroll-sticky">
+  <div class="split split--rev">
+    <div class="split__img" style="position:relative;overflow:hidden;">
+      <canvas id="norfolk-canvas" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
+    </div>
+    <div class="split__content split__content--dark">
+      <div class="split__content-inner">
+        <span class="eyebrow eyebrow--tl">Coverage</span>
+        <h2 class="h2 h2--lt">Based In Norwich,<br>Covering All Of Norfolk.</h2>
+        <p class="lead lead--lt" style="margin-bottom:32px;">From the coast at Cromer to the Broads, King's Lynn to Great Yarmouth. Not sure if we cover you? Just drop us a message.</p>
+        <div class="map-chips">
+          <span class="map-chip">Norwich</span>
+          <span class="map-chip">Wymondham</span>
+          <span class="map-chip">Dereham</span>
+          <span class="map-chip">Attleborough</span>
+          <span class="map-chip">Cromer</span>
+          <span class="map-chip">King's Lynn</span>
+          <span class="map-chip">Great Yarmouth</span>
+          <span class="map-chip">Holt</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- CTA — connected, releases with map -->
+  <div class="map-cta-connected" id="contact">
+    <div class="map-cta-connected__bg"></div>
+    <div class="map-cta-connected__inner">
+      <span class="eyebrow eyebrow--lt">Get in Touch</span>
+      <h2>Ready To Get Started?</h2>
+      <div class="map-cta-connected__btns">
+        <a href="https://wa.me/447842492651" class="btn btn--wa-lg" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.55 4.122 1.516 5.855L.057 23.454a.75.75 0 0 0 .918.918l5.599-1.459A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.933 0-3.742-.518-5.302-1.42l-.38-.22-3.322.866.882-3.322-.242-.393A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Message on WhatsApp
+        </a>
+        <a href="tel:07842492651" class="btn btn--ghost-lt">
+          Call 07842 492651
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <img src="assets/img/OMLogo.png" alt="OM Electrical Solutions" class="footer__logo">
+  <div class="footer__links">
+    <a href="tel:07842492651">07842 492651</a>
+    <a href="mailto:Oliverlmorris@icloud.com">Oliverlmorris@icloud.com</a>
+    <a href="https://wa.me/447842492651" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="#services">Services</a>
+    <a href="#work">Our Work</a>
+    <a href="#area">Areas Covered</a>
+  </div>
+  <p class="footer__copy">© 2025 OM Electrical Solutions &nbsp;·&nbsp; Norwich, Norfolk &nbsp;·&nbsp; Website by Puure Digital</p>
+</footer>
+
+<!-- MOBILE STICKY -->
+<div class="sticky-cta">
+  <a href="https://wa.me/447842492651" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.55 4.122 1.516 5.855L.057 23.454a.75.75 0 0 0 .918.918l5.599-1.459A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.933 0-3.742-.518-5.302-1.42l-.38-.22-3.322.866.882-3.322-.242-.393A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    Get a Free Quote on WhatsApp
+  </a>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div class="cursor" id="cursor"></div>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  const hero = document.getElementById('hero');
+  const lightsToggle = document.getElementById('lightsToggle');
+  const lightsLabel = document.getElementById('lightsLabel');
+  let lightsOn = true;
+
+  lightsToggle.addEventListener('click', function () {
+    lightsOn = !lightsOn;
+    hero.classList.toggle('lights-off', !lightsOn);
+    lightsLabel.textContent = lightsOn ? 'Lights on' : 'Lights off';
+  });
+
+  /* ── Custom cursor ── */
+  (function() {
+    var cur = document.getElementById('cursor');
+    if (!cur || window.matchMedia('(pointer: coarse)').matches) return;
+
+    var mx = 0, my = 0, cx = 0, cy = 0, raf;
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    document.addEventListener('mousemove', function(e) {
+      mx = e.clientX; my = e.clientY;
+      cur.classList.add('active');
+    });
+    document.addEventListener('mouseleave', function() { cur.classList.remove('active'); });
+    document.addEventListener('mouseenter', function() { cur.classList.add('active'); });
+    document.addEventListener('mousedown', function() { cur.classList.add('clicking'); });
+    document.addEventListener('mouseup',   function() { cur.classList.remove('clicking'); });
+
+    var hoverEls = document.querySelectorAll('a, button, [data-slider], .review-card, .area-chip, .slider-card');
+    hoverEls.forEach(function(el) {
+      el.addEventListener('mouseenter', function() { cur.classList.add('hovered'); });
+      el.addEventListener('mouseleave', function() { cur.classList.remove('hovered'); });
+    });
+
+    var lightEls = document.querySelectorAll('.statement-section');
+    lightEls.forEach(function(el) {
+      el.addEventListener('mouseenter', function() { cur.classList.add('on-light'); });
+      el.addEventListener('mouseleave', function() { cur.classList.remove('on-light'); });
+    });
+
+    function tick() {
+      cx = lerp(cx, mx, 0.14);
+      cy = lerp(cy, my, 0.14);
+      cur.style.left = cx + 'px';
+      cur.style.top  = cy + 'px';
+      raf = requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+</script>
+
+<script type="module">
+import { animate, inView } from 'https://cdn.jsdelivr.net/npm/motion@latest/+esm';
+
+const spring = { type: 'spring', stiffness: 72, damping: 18 };
+
+function d(el) {
+  for (let i = 1; i <= 6; i++) if (el.classList.contains('d' + i)) return i * 0.08;
+  return 0;
+}
+
+document.querySelectorAll('.anim').forEach(el => {
+  inView(el, () => {
+    animate(el, { opacity: [0,1], y: [28,0] }, { ...spring, delay: d(el) });
+  }, { margin: '0px 0px -40px 0px' });
+});
+document.querySelectorAll('.anim-left').forEach(el => {
+  inView(el, () => {
+    animate(el, { opacity: [0,1], x: [-24,0] }, { ...spring, delay: 0.05 });
+  }, { margin: '0px 0px -40px 0px' });
+});
+document.querySelectorAll('.anim-right').forEach(el => {
+  inView(el, () => {
+    animate(el, { opacity: [0,1], x: [24,0] }, { ...spring, delay: 0.12 });
+  }, { margin: '0px 0px -40px 0px' });
+});
+
+document.querySelectorAll('.review-card').forEach(el => {
+  el.addEventListener('mouseenter', () => animate(el, { y: -4 }, { type: 'spring', stiffness: 400, damping: 22 }));
+  el.addEventListener('mouseleave', () => animate(el, { y: 0 }, { type: 'spring', stiffness: 300, damping: 26 }));
+});
+
+// Before/after lighting sliders
+document.querySelectorAll('[data-slider]').forEach(function(wrap) {
+  var imgOn = wrap.querySelector('.slider-img--on');
+  var divider = wrap.querySelector('.slider-divider');
+  var dragging = false;
+
+  function setPos(pct) {
+    pct = Math.max(0, Math.min(100, pct));
+    imgOn.style.clipPath = 'inset(0 ' + (100 - pct).toFixed(1) + '% 0 0)';
+    divider.style.left = pct.toFixed(1) + '%';
+  }
+
+  function getPos(e) {
+    var rect = wrap.getBoundingClientRect();
+    var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    return ((clientX - rect.left) / rect.width) * 100;
+  }
+
+  wrap.addEventListener('mousedown', function(e) { dragging = true; setPos(getPos(e)); e.preventDefault(); });
+  document.addEventListener('mousemove', function(e) { if (dragging) setPos(getPos(e)); });
+  document.addEventListener('mouseup', function() { dragging = false; });
+  wrap.addEventListener('touchstart', function(e) { dragging = true; setPos(getPos(e)); }, { passive: true });
+  wrap.addEventListener('touchmove', function(e) { if (dragging) { e.preventDefault(); setPos(getPos(e)); } }, { passive: false });
+  wrap.addEventListener('touchend', function() { dragging = false; });
+});
+
+// Norfolk map — image sequence scroll animation
+(function() {
+  var canvas = document.getElementById('norfolk-canvas');
+  var outer  = document.getElementById('area');
+  if (!canvas || !outer) return;
+
+  var ctx    = canvas.getContext('2d');
+  var TOTAL  = 45;
+  var FOLDER = 'assets/img/video as png images/ezgif-frame-';
+  var frames = [];
+  var loaded = 0;
+
+  function pad(n) { return n < 10 ? '00' + n : n < 100 ? '0' + n : '' + n; }
+
+  function drawFrame(img) {
+    var cw = canvas.offsetWidth, ch = canvas.offsetHeight;
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = cw * dpr; canvas.height = ch * dpr;
+    canvas.style.width = cw + 'px'; canvas.style.height = ch + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    if (!img || !img.complete || !img.naturalWidth) return;
+    var scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
+    var dw = img.naturalWidth * scale, dh = img.naturalHeight * scale;
+    ctx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+  }
+
+  var lastIdx = -1;
+  function update() {
+    var sticky = outer.querySelector('.map-cta-wrapper');
+    var rect   = outer.getBoundingClientRect();
+    var scrollable = outer.offsetHeight - (sticky ? sticky.offsetHeight : window.innerHeight);
+    if (scrollable <= 0) return;
+    var p   = Math.max(0, Math.min(1, -rect.top / scrollable));
+    var idx = Math.min(Math.round(p * (TOTAL - 1)), TOTAL - 1);
+    if (idx !== lastIdx && frames[idx] && frames[idx].complete) {
+      lastIdx = idx;
+      drawFrame(frames[idx]);
+    }
+  }
+
+  for (var i = 0; i < TOTAL; i++) {
+    (function(index) {
+      var img = new Image();
+      img.onload = function() {
+        loaded++;
+        if (loaded === 1) drawFrame(img);
+        if (loaded === TOTAL) update();
+      };
+      img.src = FOLDER + pad(index + 1) + '.png';
+      frames[index] = img;
+    })(i);
+  }
+
+  window.addEventListener('scroll', function() {
+    requestAnimationFrame(update);
+  }, { passive: true });
+
+  window.addEventListener('resize', function() {
+    if (frames[lastIdx >= 0 ? lastIdx : 0]) drawFrame(frames[lastIdx >= 0 ? lastIdx : 0]);
+  });
+})();
+
+// Intro preloader
+(function() {
+  var intro = document.getElementById('intro');
+  if (!intro) return;
+  document.body.style.overflow = 'hidden';
+  setTimeout(function() {
+    intro.classList.add('out');
+    document.body.style.overflow = '';
+    intro.addEventListener('transitionend', function() {
+      intro.remove();
+    }, { once: true });
+  }, 2200);
+})();
+
+// Services scroll carousel
+(function() {
+  var section = document.querySelector('.svc-scroll-section');
+  var track   = document.querySelector('.svc-scroll-track');
+  var dots    = document.querySelectorAll('.svc-scroll-dot');
+  var countEl = document.querySelector('.svc-scroll-count .cur');
+  if (!section || !track) return;
+
+  var NUM = 6;
+  var curX = 0;
+  var tgtX = 0;
+  var lastIdx = -1;
+
+  function isMobile() { return window.innerWidth <= 768; }
+
+  function getProgress() {
+    var rect = section.getBoundingClientRect();
+    var scrollable = section.offsetHeight - window.innerHeight;
+    if (scrollable <= 0) return 0;
+    return Math.max(0, Math.min(1, -rect.top / scrollable));
+  }
+
+  function setIdx(idx) {
+    if (idx === lastIdx) return;
+    lastIdx = idx;
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+    if (countEl) countEl.textContent = (idx + 1 < 10 ? '0' : '') + (idx + 1);
+  }
+
+  function tick() {
+    requestAnimationFrame(tick);
+    if (isMobile()) {
+      track.style.transform = '';
+      return;
+    }
+    tgtX = -getProgress() * (NUM - 1) * window.innerWidth;
+    curX += (tgtX - curX) * 0.12;
+    if (Math.abs(tgtX - curX) < 0.5) curX = tgtX;
+    track.style.transform = 'translateX(' + curX.toFixed(2) + 'px)';
+    setIdx(Math.round(-curX / window.innerWidth));
+  }
+
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
