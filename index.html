@@ -1298,6 +1298,7 @@
     ══════════════════════════════ */
     .about-strip { background: var(--bg); padding: 0; }
     .about-strip__img-wrap { position: relative; width: 100%; height: 640px; overflow: hidden; }
+    .about-strip__img-clip { position: absolute; inset: 0; overflow: hidden; }
     .about-strip__gradient {
       position: absolute; inset: 0; z-index: 3; pointer-events: none;
       background: linear-gradient(to top,
@@ -1468,18 +1469,61 @@
     }
     @media (max-width: 720px) {
       .about-strip { padding: 0; }
-      .about-strip__top { grid-template-columns: 1fr; gap: 24px; margin-bottom: 36px; }
-      .about-strip__img-wrap { height: 580px; }
-      .about-strip__img { object-position: 45% 42%; }
-      .about-strip__content { padding: 0 20px 40px; }
-      .about-strip__top { grid-template-columns: 1fr; gap: 20px; }
+      .about-strip__img-wrap {
+        height: auto;
+        overflow: visible;
+      }
+      .about-strip__img-clip {
+        position: absolute;
+        top: 0; left: -8%; right: -8%; bottom: auto;
+        height: 220px;
+        overflow: hidden;
+        transform: rotate(-1.25deg);
+        transform-origin: left center;
+      }
+      .about-strip__img {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: auto;
+        height: 220px;
+        width: 100%;
+        object-fit: cover;
+        object-position: 45% 45%;
+      }
+      .about-strip__gradient { display: none; }
+      .about-lights-toggle { top: 174px; bottom: auto; }
+      .about-strip__content {
+        position: static;
+        padding: 220px 20px 40px;
+        background: var(--bg);
+      }
+      .about-strip__top { grid-template-columns: 1fr; gap: 20px; margin-bottom: 0; }
       .about-strip__top-right .lead { margin-bottom: 20px; }
-      .about-strip__stats { padding: 36px 0; gap: 0; }
-      .about-strip__stat { padding: 0; flex: 1; }
-      .about-strip__stat:first-child { padding-left: 0; }
-      .about-strip__stat:nth-child(2) { padding: 0 12px; }
-      .about-strip__stat-val { font-size: 17px; }
-      .about-strip__stat-label { font-size: 10px; }
+      .about-strip__stats-wrap { padding: 0; overflow: visible; }
+      .about-strip__stats {
+        display: flex;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        padding: 0;
+        border-top: none;
+        gap: 0;
+        scrollbar-width: none;
+        width: 100vw;
+      }
+      .about-strip__stats::-webkit-scrollbar { display: none; }
+      .about-strip__stat {
+        flex: 0 0 75vw;
+        scroll-snap-align: start;
+        padding: 32px 24px;
+        border-right: 1px solid rgba(255,255,255,0.07);
+      }
+      .about-strip__stat:first-child { padding-left: 24px; }
+      .about-strip__stat:last-child { border-right: none; padding-right: 24px; }
+      .about-strip__stat:nth-child(2) { padding: 32px 24px; }
+      .about-strip__stat-div { display: none; }
+      .about-strip__stat-val { font-size: 22px; }
+      .about-strip__stat-label { font-size: 11px; }
     }
 
     /* ── Split content ── */
@@ -1934,8 +1978,10 @@
 <!-- ABOUT -->
 <section class="about-strip" id="about">
   <div class="about-strip__img-wrap lights-off" id="aboutImgWrap">
-    <img src="assets/img/OMES/butcher bhoy front.png" alt="Butcher Bhoy, Norwich — OM Electrical Solutions commercial work" class="about-strip__img about-strip__img--on">
-    <img src="assets/img/OMES/butcher bhoy front dark.png" alt="Butcher Bhoy at night" class="about-strip__img about-strip__img--off">
+    <div class="about-strip__img-clip">
+      <img src="assets/img/OMES/butcher bhoy front wide.png" alt="Butcher Bhoy, Norwich — OM Electrical Solutions commercial work" class="about-strip__img about-strip__img--on">
+      <img src="assets/img/OMES/butcher bhoy front wide night.png" alt="Butcher Bhoy at night" class="about-strip__img about-strip__img--off">
+    </div>
     <div class="about-strip__gradient"></div>
     <div class="about-strip__content">
       <div class="about-strip__accent"></div>
@@ -1956,7 +2002,7 @@
       <span class="about-lights-label" id="aboutLightsLabel">Night</span>
     </button>
   </div>
-  <div class="wrap">
+  <div class="wrap about-strip__stats-wrap">
     <div class="about-strip__stats">
       <div class="about-strip__stat">
         <span class="about-strip__stat-val">100+</span>
@@ -2129,7 +2175,7 @@
 <!-- FLOATING CALL BUTTON (mobile) -->
 <a href="tel:07842492651" class="float-call" aria-label="Call OM Electrical Solutions">
   <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.04z"/></svg>
-  Call – OM Electrical Solutions
+  OM Electrical Solutions
 </a>
 
 <!-- CUSTOM CURSOR -->
