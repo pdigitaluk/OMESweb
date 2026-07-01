@@ -531,14 +531,13 @@
       .svc-scroll-right { display: none; }
     }
     @media (max-width: 768px) {
-      .svc-scroll-section { height: auto; overflow: visible; }
-      .svc-scroll-sticky { position: relative; height: auto; overflow: visible; }
-      .svc-scroll-track { flex-direction: column; transform: none !important; }
-      .svc-scroll-card { min-width: 100%; height: auto; padding: 72px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-      .svc-scroll-card:last-child { border-bottom: none; }
-      .svc-scroll-hdr { position: relative; top: auto; left: auto; transform: none; padding: 40px max(28px, calc((100vw - 1120px) / 2)) 0; }
-      .svc-scroll-left { padding-top: 0; }
-      .svc-scroll-dots { display: none; }
+      /* Keep horizontal scroll active on mobile — just tighten sizing */
+      .svc-scroll-inner { padding: 0 24px; }
+      .svc-scroll-left { padding-top: 80px; }
+      .svc-scroll-h { font-size: clamp(30px, 9vw, 46px); }
+      .svc-scroll-p { font-size: 15px; margin-bottom: 28px; }
+      .svc-scroll-dots { bottom: 28px; }
+      .svc-scroll-hdr { padding: 0 24px; top: 32px; }
     }
 
     /* ══════════════════════════════
@@ -1294,13 +1293,6 @@
       .statement-chips { gap: 6px; }
     }
 
-    /* ── Services scroll ── */
-    @media (max-width: 720px) {
-      .svc-scroll-inner { padding: 0 20px; }
-      .svc-scroll-h { font-size: clamp(28px, 8vw, 44px); }
-      .svc-scroll-p { font-size: 15px; margin-bottom: 28px; }
-      .svc-scroll-card { padding: 60px 0; }
-    }
 
     /* ── About split — mobile ── */
     @media (max-width: 1000px) {
@@ -2131,8 +2123,6 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
   var tgtX = 0;
   var lastIdx = -1;
 
-  function isMobile() { return window.innerWidth <= 768; }
-
   function getProgress() {
     var rect = section.getBoundingClientRect();
     var scrollable = section.offsetHeight - window.innerHeight;
@@ -2149,10 +2139,6 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
 
   function tick() {
     requestAnimationFrame(tick);
-    if (isMobile()) {
-      track.style.transform = '';
-      return;
-    }
     tgtX = -getProgress() * (NUM - 1) * window.innerWidth;
     curX += (tgtX - curX) * 0.12;
     if (Math.abs(tgtX - curX) < 0.5) curX = tgtX;
