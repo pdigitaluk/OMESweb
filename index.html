@@ -43,13 +43,14 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
 
     body {
       font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       font-size: 16px; line-height: 1.6;
       color: var(--text); background: var(--white);
       -webkit-font-smoothing: antialiased;
+      overflow-x: clip;
     }
 
     /* ── Anim states ── */
@@ -798,11 +799,26 @@
     .footer__copy { font-size: 12px; color: rgba(255,255,255,0.14); }
 
     /* ══════════════════════════════
-       MOBILE STICKY CTA
+       FLOATING CALL BUTTON
     ══════════════════════════════ */
-    .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 150; padding: 10px 16px 20px; background: linear-gradient(to top, rgba(15,31,34,0.98), transparent); }
-    .sticky-cta a { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--wa); color: #fff; font-family: inherit; font-size: 16px; font-weight: 700; padding: 16px; border-radius: 12px; text-decoration: none; box-shadow: 0 4px 24px rgba(37,211,102,0.4); }
-    .sticky-cta a svg { width: 20px; height: 20px; fill: #fff; }
+    .float-call {
+      display: none;
+      position: fixed; bottom: 24px; right: 16px; z-index: 150;
+      align-items: center; gap: 8px;
+      background: rgba(12,12,12,0.92);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff; text-decoration: none;
+      font-family: inherit; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 11px 18px 11px 14px;
+      border-radius: 100px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+      transition: background 0.2s, border-color 0.2s, transform 0.18s;
+    }
+    .float-call:active { transform: scale(0.96); }
+    .float-call svg { width: 15px; height: 15px; stroke: var(--teal); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 
     /* ══════════════════════════════
        RESPONSIVE
@@ -838,7 +854,7 @@
       .stats-row { grid-template-columns: 1fr 1fr; }
       .trust__inner { gap: 0; }
       .split__content { padding: 40px 24px; }
-      .sticky-cta { display: block; }
+      .float-call { display: inline-flex; }
       .slider-card { flex: 0 0 210px; }
     }
 
@@ -986,7 +1002,6 @@
     .btn--primary:hover { background: #00e5ae; box-shadow: 0 6px 24px rgba(0,212,160,0.28); }
     .lead { color: rgba(255,255,255,0.7); }
     .review-body { color: rgba(255,255,255,0.75); font-style: normal; }
-    .sticky-cta { background: linear-gradient(to top, rgba(10,10,10,0.97) 0%, transparent 100%); }
     .lighting-showcase__header { max-width: 1120px; margin: 0 auto; padding: 0 28px 36px; }
 
     /* ══════════════════════════════
@@ -1316,7 +1331,7 @@
 
     /* ── Map + CTA section — disable sticky animation ── */
     @media (max-width: 720px) {
-      .map-scroll-outer { height: auto !important; overflow: visible; }
+      .map-scroll-outer { height: auto !important; overflow-x: clip; overflow-y: visible; }
       .map-cta-wrapper { position: static; height: auto; overflow: visible; flex-direction: column; }
       .map-scroll-sticky { height: auto; flex-shrink: unset; overflow: visible; }
       .map-scroll-sticky .split { display: flex; flex-direction: column; height: auto; min-height: auto; }
@@ -1341,14 +1356,27 @@
 
     /* ── Footer ── */
     @media (max-width: 720px) {
-      .footer { padding: 52px 20px 100px; }
+      .footer { padding: 52px 20px 64px; }
       .footer__links { gap: 8px 18px; }
       .footer__logo { height: 32px; margin-bottom: 20px; }
     }
 
-    /* ── Sticky CTA — safe area ── */
+    /* ── Float call — safe area ── */
     @media (max-width: 720px) {
-      .sticky-cta { padding: 12px 16px max(20px, env(safe-area-inset-bottom, 20px)); }
+      .float-call { bottom: max(20px, env(safe-area-inset-bottom, 20px)); }
+    }
+
+    /* ── Global overflow guards (mobile) ── */
+    @media (max-width: 720px) {
+      .wrap { max-width: 100%; }
+      .section { padding: 72px 20px; }
+      .svc-scroll-hdr { width: 100%; max-width: 100%; }
+      .map-cta-connected__btns > a { max-width: 100%; }
+      /* Ensure split panels never overflow their column */
+      .split > * { min-width: 0; }
+      /* Prevent nav pill from causing overflow */
+      .nav__inner { max-width: 100%; }
+      .nav__pill { width: 100%; }
     }
 
     /* ── Pull quote ── */
@@ -1881,13 +1909,11 @@
   <p class="footer__copy">© 2025 OM Electrical Solutions &nbsp;·&nbsp; Norwich, Norfolk &nbsp;·&nbsp; Website by Puure Digital</p>
 </footer>
 
-<!-- MOBILE STICKY -->
-<div class="sticky-cta">
-  <a href="https://wa.me/447842492651" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.55 4.122 1.516 5.855L.057 23.454a.75.75 0 0 0 .918.918l5.599-1.459A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.933 0-3.742-.518-5.302-1.42l-.38-.22-3.322.866.882-3.322-.242-.393A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-    Get a Free Quote on WhatsApp
-  </a>
-</div>
+<!-- FLOATING CALL BUTTON (mobile) -->
+<a href="tel:07842492651" class="float-call" aria-label="Call Oliver">
+  <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.04z"/></svg>
+  Call Oliver
+</a>
 
 <!-- CUSTOM CURSOR -->
 <div class="cursor" id="cursor"></div>
