@@ -640,7 +640,14 @@
       box-shadow: 0 0 0 6px #1e1e1e;
       transition: background 0.22s, border-color 0.22s, color 0.22s;
     }
-    .step:hover .step__num { background: var(--teal); border-color: var(--teal); color: #0a0a0a; }
+    .step:hover .step__num,
+    .step--lit .step__num {
+      background: var(--teal); border-color: var(--teal); color: #0a0a0a;
+    }
+    .step--lit .step__num {
+      box-shadow: 0 0 0 6px #1e1e1e, 0 0 20px rgba(0,212,160,0.35);
+      transition: background 0.4s, border-color 0.4s, color 0.4s, box-shadow 0.4s;
+    }
     .step h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 10px; }
     .step p { font-size: 14px; line-height: 1.68; color: var(--muted); }
 
@@ -2095,6 +2102,22 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
   window.addEventListener('resize', function() {
     if (frames[lastIdx >= 0 ? lastIdx : 0]) drawFrame(frames[lastIdx >= 0 ? lastIdx : 0]);
   });
+})();
+
+// Step number glow on scroll (mobile)
+(function() {
+  var steps = document.querySelectorAll('.step');
+  if (!steps.length || !('IntersectionObserver' in window)) return;
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('step--lit');
+      } else {
+        e.target.classList.remove('step--lit');
+      }
+    });
+  }, { threshold: 0.5 });
+  steps.forEach(function(s) { obs.observe(s); });
 })();
 
 // Intro preloader
