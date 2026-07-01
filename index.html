@@ -2140,8 +2140,13 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
   function tick() {
     requestAnimationFrame(tick);
     tgtX = -getProgress() * (NUM - 1) * window.innerWidth;
-    curX += (tgtX - curX) * 0.12;
-    if (Math.abs(tgtX - curX) < 0.5) curX = tgtX;
+    if (window.innerWidth <= 768) {
+      // No lerp on mobile — direct 1:1 mapping prevents shake from double-smoothing
+      curX = tgtX;
+    } else {
+      curX += (tgtX - curX) * 0.12;
+      if (Math.abs(tgtX - curX) < 0.5) curX = tgtX;
+    }
     track.style.transform = 'translateX(' + curX.toFixed(2) + 'px)';
     setIdx(Math.round(-curX / window.innerWidth));
   }
