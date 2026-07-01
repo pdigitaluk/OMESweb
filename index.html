@@ -532,9 +532,22 @@
       .svc-scroll-right { display: none; }
     }
     @media (max-width: 768px) {
-      /* Keep horizontal scroll active on mobile — just tighten sizing */
-      .svc-scroll-inner { padding: 0 24px; }
-      .svc-scroll-left { padding-top: 80px; }
+      /* Native swipe — no JS transform, compositor handles everything */
+      .svc-scroll-section { height: 100svh; overflow: hidden; }
+      .svc-scroll-sticky { position: relative; height: 100%; touch-action: pan-x pan-y; }
+      .svc-scroll-track {
+        display: flex; flex-direction: row;
+        overflow-x: scroll; overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        transform: none !important;
+        height: 100%;
+      }
+      .svc-scroll-track::-webkit-scrollbar { display: none; }
+      .svc-scroll-card { min-width: 100vw; height: 100%; scroll-snap-align: start; flex-shrink: 0; }
+      .svc-scroll-inner { padding: 0 24px; grid-template-columns: 1fr; }
+      .svc-scroll-left { padding-top: 96px; }
       .svc-scroll-h { font-size: clamp(30px, 9vw, 46px); }
       .svc-scroll-p { font-size: 15px; margin-bottom: 28px; }
       .svc-scroll-dots { bottom: 28px; }
@@ -2146,14 +2159,6 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
   var curX = 0;
   var tgtX = 0;
   var lastIdx = -1;
-  var rafPending = false;
-
-  function getProgress() {
-    var rect = section.getBoundingClientRect();
-    var scrollable = section.offsetHeight - window.innerHeight;
-    if (scrollable <= 0) return 0;
-    return Math.max(0, Math.min(1, -rect.top / scrollable));
-  }
 
   function setIdx(idx) {
     if (idx === lastIdx) return;
@@ -2162,11 +2167,22 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
     if (countEl) countEl.textContent = (idx + 1 < 10 ? '0' : '') + (idx + 1);
   }
 
-  function applyMobile() {
-    curX = -getProgress() * (NUM - 1) * window.innerWidth;
-    track.style.transform = 'translateX(' + curX.toFixed(1) + 'px)';
-    setIdx(Math.round(-curX / window.innerWidth));
-    rafPending = false;
+  if (window.innerWidth <= 768) {
+    // Mobile: fully native horizontal swipe — no JS transforms at all
+    // Browser compositor handles scrolling smoothly
+    track.addEventListener('scroll', function() {
+      var idx = Math.round(track.scrollLeft / track.offsetWidth);
+      setIdx(Math.max(0, Math.min(NUM - 1, idx)));
+    }, { passive: true });
+    return;
+  }
+
+  // Desktop: scroll-jacked horizontal animation
+  function getProgress() {
+    var rect = section.getBoundingClientRect();
+    var scrollable = section.offsetHeight - window.innerHeight;
+    if (scrollable <= 0) return 0;
+    return Math.max(0, Math.min(1, -rect.top / scrollable));
   }
 
   function tick() {
@@ -2178,18 +2194,7 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
     setIdx(Math.round(-curX / window.innerWidth));
   }
 
-  if (window.innerWidth <= 768) {
-    // Mobile: scroll-event driven only — no continuous RAF loop to fight the compositor
-    window.addEventListener('scroll', function() {
-      if (!rafPending) {
-        rafPending = true;
-        requestAnimationFrame(applyMobile);
-      }
-    }, { passive: true });
-    applyMobile();
-  } else {
-    requestAnimationFrame(tick);
-  }
+  requestAnimationFrame(tick);
 })();
 </script>
 </body>
