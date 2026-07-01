@@ -450,124 +450,72 @@
     .svc-card p { font-size: 14px; line-height: 1.68; color: var(--muted); margin-bottom: 20px; }
 
     /* ══════════════════════════════
-       SERVICE SCROLL CAROUSEL
+       SERVICES ACCORDION
     ══════════════════════════════ */
-    .svc-scroll-section { height: 500vh; position: relative; overflow-x: clip; }
-    .svc-scroll-sticky {
-      position: sticky; top: 0; height: 100vh;
-      overflow: hidden; background: var(--bg);
-      touch-action: pan-y;
+    .svc-acc-section { background: var(--bg); padding: 100px 0; }
+    .svc-acc-hdr { padding: 0 max(28px, calc((100vw - 1120px) / 2)); margin-bottom: 56px; }
+    .svc-acc { border-top: 1px solid rgba(255,255,255,0.08); }
+    .svc-acc__item { border-bottom: 1px solid rgba(255,255,255,0.08); overflow: hidden; }
+    .svc-acc__trigger {
+      width: 100%; background: none; border: none; color: inherit;
+      display: flex; align-items: center; gap: 20px;
+      padding: 28px max(28px, calc((100vw - 1120px) / 2));
+      cursor: pointer; text-align: left;
+      transition: background 0.2s;
     }
-    .svc-scroll-hdr {
-      position: absolute; top: 40px; left: 50%;
-      transform: translateX(-50%);
-      width: 100%; max-width: 1176px;
-      padding: 0 max(28px, calc((100vw - 1120px) / 2));
-      display: flex; align-items: center; justify-content: space-between;
-      z-index: 2; pointer-events: none;
+    .svc-acc__trigger:hover { background: rgba(255,255,255,0.025); }
+    .svc-acc__num {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.18); min-width: 26px; flex-shrink: 0;
     }
-    .svc-scroll-count {
-      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.35);
+    .svc-acc__name {
+      font-size: clamp(20px, 2.4vw, 32px); font-weight: 700;
+      letter-spacing: -0.02em; color: #fff; flex: 1;
+      transition: color 0.25s;
     }
-    .svc-scroll-count .cur { color: var(--teal); }
-    .svc-scroll-track { display: flex; height: 100%; will-change: transform; }
-    .svc-scroll-card {
-      min-width: 100vw; height: 100%;
-      display: flex; align-items: center; flex-shrink: 0;
+    .svc-acc__badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--teal);
+      background: rgba(0,212,160,0.08); border: 1px solid rgba(0,212,160,0.15);
+      padding: 4px 10px; border-radius: 4px; flex-shrink: 0;
     }
-    .svc-scroll-inner {
-      width: 100%;
-      padding: 0 max(28px, calc((100vw - 1120px) / 2));
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
-    }
-    .svc-scroll-left { padding-top: 40px; }
-    .svc-scroll-right { display: flex; align-items: center; justify-content: center; }
-    .svc-scroll-num {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: clamp(140px, 20vw, 280px);
-      font-weight: 800; color: rgba(255,255,255,0.04);
-      line-height: 1; letter-spacing: -0.04em;
-      user-select: none; pointer-events: none;
-    }
-    .svc-scroll-icon {
-      width: 52px; height: 52px; border-radius: 14px;
-      background: rgba(0,212,160,0.1);
-      border: 1px solid rgba(0,212,160,0.12);
+    .svc-acc__icon {
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 24px;
+      flex-shrink: 0; transition: border-color 0.25s, background 0.25s, transform 0.35s;
     }
-    .svc-scroll-icon svg { width: 22px; height: 22px; stroke: var(--teal); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .svc-scroll-stag {
-      display: inline-block; font-size: 10px; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--teal); background: rgba(0,212,160,0.08);
-      border: 1px solid rgba(0,212,160,0.15);
-      border-radius: 4px; padding: 4px 10px; margin-bottom: 20px;
+    .svc-acc__icon svg { width: 12px; height: 12px; stroke: rgba(255,255,255,0.4); fill: none; stroke-width: 2.2; stroke-linecap: round; transition: stroke 0.25s; }
+    .svc-acc__item--open .svc-acc__trigger { background: rgba(255,255,255,0.02); }
+    .svc-acc__item--open .svc-acc__icon { background: var(--teal); border-color: var(--teal); transform: rotate(45deg); }
+    .svc-acc__item--open .svc-acc__icon svg { stroke: #0a0a0a; }
+    .svc-acc__item--open .svc-acc__name { color: var(--teal); }
+    .svc-acc__item--open .svc-acc__num { color: rgba(255,255,255,0.35); }
+    .svc-acc__body { max-height: 0; overflow: hidden; transition: max-height 0.42s cubic-bezier(0.4,0,0.2,1); }
+    .svc-acc__item--open .svc-acc__body { max-height: 160px; }
+    .svc-acc__body-inner {
+      padding: 0 max(28px, calc((100vw - 1120px) / 2)) 36px;
+      padding-left: calc(max(28px, calc((100vw - 1120px) / 2)) + 46px);
+      display: flex; align-items: center; gap: 40px;
     }
-    .svc-scroll-h {
-      font-size: clamp(36px, 5vw, 60px); font-weight: 800;
-      color: #ffffff; line-height: 1.06;
-      letter-spacing: -0.02em; margin-bottom: 18px;
+    .svc-acc__body-inner p { font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 520px; margin: 0; }
+    .svc-acc__cta {
+      flex-shrink: 0; display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.01em;
+      color: var(--teal); text-decoration: none; white-space: nowrap;
+      transition: gap 0.2s;
     }
-    .svc-scroll-p {
-      font-size: 17px; line-height: 1.72;
-      color: rgba(255,255,255,0.5);
-      max-width: 440px; margin-bottom: 36px;
-    }
-    .svc-scroll-dots {
-      position: absolute; bottom: 40px; left: 50%;
-      transform: translateX(-50%);
-      display: flex; gap: 8px; z-index: 2;
-    }
-    .svc-scroll-dot {
-      width: 6px; height: 6px; border-radius: 3px;
-      background: rgba(255,255,255,0.18);
-      transition: width 0.3s ease, background 0.3s ease;
-    }
-    .svc-scroll-dot.active { width: 24px; background: var(--teal); }
-    @media (max-width: 1024px) {
-      .svc-scroll-inner { grid-template-columns: 1fr; gap: 0; }
-      .svc-scroll-right { display: none; }
-    }
-    @media (max-width: 768px) {
-      /* Native swipe — no JS transform, compositor handles everything */
-      .svc-scroll-section { height: 100svh; overflow: hidden; }
-      .svc-scroll-sticky { position: relative; height: 100%; touch-action: pan-x pan-y; overflow: hidden; }
-      .svc-scroll-track {
-        display: flex; flex-direction: row;
-        overflow-x: scroll; overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        transform: none !important;
-        height: 100%;
-      }
-      .svc-scroll-track::-webkit-scrollbar { display: none; }
-      .svc-scroll-card {
-        min-width: 100vw; width: 100vw; height: 100%;
-        scroll-snap-align: start; flex-shrink: 0;
-        overflow: hidden;
-        display: flex; align-items: center;
-      }
-      .svc-scroll-inner {
-        padding: 0 24px;
-        grid-template-columns: 1fr;
-        width: 100%;
-      }
-      .svc-scroll-left {
-        padding-top: 72px;
-        padding-bottom: 64px;
-        display: flex; flex-direction: column; justify-content: center;
-      }
-      .svc-scroll-stag { margin-bottom: 14px; }
-      .svc-scroll-icon { width: 44px; height: 44px; margin-bottom: 16px; }
-      .svc-scroll-h { font-size: clamp(28px, 8vw, 40px); margin-bottom: 12px; }
-      .svc-scroll-p { font-size: 15px; line-height: 1.6; margin-bottom: 20px; max-width: 100%; }
-      .svc-scroll-dots { bottom: 24px; }
-      .svc-scroll-hdr { padding: 0 24px; top: 20px; }
-      .svc-scroll-count { font-size: 11px; }
+    .svc-acc__cta:hover { gap: 12px; }
+    .svc-acc__cta svg { width: 14px; height: 14px; stroke: var(--teal); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    @media (max-width: 720px) {
+      .svc-acc-section { padding: 72px 0; }
+      .svc-acc-hdr { padding: 0 20px; margin-bottom: 40px; }
+      .svc-acc__trigger { gap: 14px; padding: 22px 20px; }
+      .svc-acc__badge { display: none; }
+      .svc-acc__name { font-size: clamp(18px, 5vw, 24px); }
+      .svc-acc__body-inner { padding: 0 20px 28px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .svc-acc__body-inner p { font-size: 15px; }
+      .svc-acc__item--open .svc-acc__body { max-height: 280px; }
     }
 
     /* ══════════════════════════════
@@ -585,6 +533,28 @@
     .map-cta-connected__inner .eyebrow { display: block; margin-bottom: 12px; }
     .map-cta-connected__inner h2 { font-size: clamp(24px, 3vw, 40px); font-weight: 800; letter-spacing: -0.02em; color: #fff; margin-bottom: 28px; line-height: 1.1; }
     .map-cta-connected__btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+    /* ══════════════════════════════
+       COVERAGE — MOBILE EDITORIAL
+    ══════════════════════════════ */
+    .coverage-mob { display: none; position: relative; overflow: hidden; background: var(--bg); padding: 72px 24px 64px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .coverage-mob__wm {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(72px, 32vw, 200px);
+      font-weight: 800; letter-spacing: -0.05em;
+      color: rgba(255,255,255,0.035);
+      white-space: nowrap; pointer-events: none; user-select: none; line-height: 1;
+    }
+    .coverage-mob__inner { position: relative; z-index: 1; }
+    .coverage-mob__accent { width: 36px; height: 2px; background: var(--teal); margin-bottom: 28px; }
+    .coverage-mob .eyebrow { display: block; margin-bottom: 14px; }
+    .coverage-mob .h2--lt { font-size: clamp(30px, 9vw, 44px); margin-bottom: 18px; }
+    .coverage-mob .lead--lt { font-size: 15px; line-height: 1.72; color: rgba(255,255,255,0.55); margin-bottom: 36px; }
+    .coverage-mob__sep { width: 100%; height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 22px; }
+    .coverage-mob__towns { font-size: 14px; line-height: 2.1; color: rgba(255,255,255,0.4); }
+    .coverage-mob__towns span { white-space: nowrap; }
+    .coverage-mob__towns span + span::before { content: ' · '; color: var(--teal); margin: 0 1px; }
     .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 520px; }
     .split--rev { direction: rtl; }
     .split--rev > * { direction: ltr; }
@@ -1367,18 +1337,13 @@
     @media (max-width: 720px) {
       .map-scroll-outer { height: auto !important; overflow-x: clip; overflow-y: visible; }
       .map-cta-wrapper { position: static; height: auto; overflow: visible; flex-direction: column; }
-      .map-scroll-sticky { height: auto; flex-shrink: unset; overflow: visible; }
-      .map-scroll-sticky .split { display: flex; flex-direction: column; height: auto; min-height: auto; }
-      .map-scroll-sticky .split--rev { direction: ltr; }
-      .map-scroll-sticky .split__img { height: 260px; min-height: unset; }
-      .map-scroll-sticky .split__content { padding: 40px 20px 48px; }
-      .map-scroll-sticky .split__content-inner { max-width: 100%; }
-      .map-cta-connected { min-height: auto; }
-      .map-cta-connected__inner { padding: 48px 20px 80px; }
+      .map-scroll-sticky { display: none; }
+      .coverage-mob { display: block; }
+      .map-cta-connected { min-height: auto; border-top: none; }
+      .map-cta-connected__inner { padding: 64px 24px 80px; }
       .map-cta-connected__inner h2 { font-size: clamp(26px, 7vw, 36px); margin-bottom: 24px; }
       .map-cta-connected__btns { flex-direction: column; align-items: center; }
       .map-cta-connected__btns > * { width: 100%; max-width: 300px; justify-content: center; }
-      .map-chips { padding-bottom: 24px; }
     }
 
     /* ── CTA section ── */
@@ -1404,7 +1369,6 @@
     @media (max-width: 720px) {
       .wrap { max-width: 100%; }
       .section { padding: 72px 20px; }
-      .svc-scroll-hdr { width: 100%; max-width: 100%; }
       .map-cta-connected__btns > a { max-width: 100%; }
       /* Ensure split panels never overflow their column */
       .split > * { min-width: 0; }
@@ -1423,7 +1387,6 @@
     @media (max-width: 380px) {
       .hero h1 { font-size: 30px; }
       .btn--wa-lg { font-size: 14px; padding: 14px 20px; }
-      .svc-scroll-h { font-size: 26px; }
     }
 
   </style>
@@ -1662,105 +1625,99 @@
 </section>
 
 <!-- SERVICES -->
-<section class="svc-scroll-section" id="services">
-  <div class="svc-scroll-sticky">
-    <div class="svc-scroll-hdr">
-      <span class="eyebrow">What We Do</span>
-      <div class="svc-scroll-count"><span class="cur">01</span>&thinsp;/&thinsp;06</div>
+<section class="svc-acc-section" id="services">
+  <div class="svc-acc-hdr">
+    <span class="eyebrow anim">What We Do</span>
+    <h2 class="h2 anim d1">Our Services</h2>
+  </div>
+  <div class="svc-acc" role="list">
+
+    <div class="svc-acc__item" role="listitem">
+      <button class="svc-acc__trigger" aria-expanded="false">
+        <span class="svc-acc__num">01</span>
+        <span class="svc-acc__name">Full Rewires</span>
+        <span class="svc-acc__badge">Most Requested</span>
+        <span class="svc-acc__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </button>
+      <div class="svc-acc__body">
+        <div class="svc-acc__body-inner">
+          <p>Old or unsafe wiring replaced with a full modern electrical system. Done safely, done properly.</p>
+          <a href="#contact" class="svc-acc__cta">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
     </div>
 
-    <div class="svc-scroll-track">
-
-      <!-- 01 Full Rewires -->
-      <div class="svc-scroll-card">
-        <div class="svc-scroll-inner">
-          <div class="svc-scroll-left">
-            <span class="svc-scroll-stag">Most Requested</span>
-            <div class="svc-scroll-icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-            <h2 class="svc-scroll-h">Full Rewires</h2>
-            <p class="svc-scroll-p">Old or unsafe wiring replaced with a full modern electrical system. Done safely, done properly.</p>
-            <a href="#contact" class="link-arrow">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-          </div>
-          <div class="svc-scroll-right"><span class="svc-scroll-num">01</span></div>
+    <div class="svc-acc__item" role="listitem">
+      <button class="svc-acc__trigger" aria-expanded="false">
+        <span class="svc-acc__num">02</span>
+        <span class="svc-acc__name">Fuse Board Upgrades</span>
+        <span class="svc-acc__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </button>
+      <div class="svc-acc__body">
+        <div class="svc-acc__body-inner">
+          <p>Modern consumer units with RCD protection. Required for house sales and essential for safety.</p>
+          <a href="#contact" class="svc-acc__cta">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
-
-      <!-- 02 Fuse Board -->
-      <div class="svc-scroll-card">
-        <div class="svc-scroll-inner">
-          <div class="svc-scroll-left">
-            <div class="svc-scroll-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/></svg></div>
-            <h2 class="svc-scroll-h">Fuse Board Upgrades</h2>
-            <p class="svc-scroll-p">Modern consumer units with RCD protection. Required for house sales and essential for safety.</p>
-            <a href="#contact" class="link-arrow">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-          </div>
-          <div class="svc-scroll-right"><span class="svc-scroll-num">02</span></div>
-        </div>
-      </div>
-
-      <!-- 03 Extra Sockets -->
-      <div class="svc-scroll-card">
-        <div class="svc-scroll-inner">
-          <div class="svc-scroll-left">
-            <div class="svc-scroll-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/></svg></div>
-            <h2 class="svc-scroll-h">Extra Sockets</h2>
-            <p class="svc-scroll-p">Additional plug points added neatly, with minimal disruption to your walls and décor.</p>
-            <a href="#contact" class="link-arrow">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-          </div>
-          <div class="svc-scroll-right"><span class="svc-scroll-num">03</span></div>
-        </div>
-      </div>
-
-      <!-- 04 EV Charger -->
-      <div class="svc-scroll-card">
-        <div class="svc-scroll-inner">
-          <div class="svc-scroll-left">
-            <span class="svc-scroll-stag">Growing Fast</span>
-            <div class="svc-scroll-icon"><svg viewBox="0 0 24 24"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><path d="M21 13v4a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2z"/></svg></div>
-            <h2 class="svc-scroll-h">EV Charger Installation</h2>
-            <p class="svc-scroll-p">Home EV chargers installed safely so your car is always charged and ready to go.</p>
-            <a href="#contact" class="link-arrow">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-          </div>
-          <div class="svc-scroll-right"><span class="svc-scroll-num">04</span></div>
-        </div>
-      </div>
-
-      <!-- 05 Kitchen Refurbs -->
-      <div class="svc-scroll-card">
-        <div class="svc-scroll-inner">
-          <div class="svc-scroll-left">
-            <div class="svc-scroll-icon"><svg viewBox="0 0 24 24"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M3 9V7a2 2 0 0 1 2-2h2V3h2v2h4V3h2v2h2a2 2 0 0 1 2 2v2"/></svg></div>
-            <h2 class="svc-scroll-h">Kitchen Refurbs</h2>
-            <p class="svc-scroll-p">Extra circuits, moved sockets, new appliance connections. We handle all the electrical works alongside your builders.</p>
-            <a href="#contact" class="link-arrow">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-          </div>
-          <div class="svc-scroll-right"><span class="svc-scroll-num">05</span></div>
-        </div>
-      </div>
-
-      <!-- 06 Lighting -->
-      <div class="svc-scroll-card">
-        <div class="svc-scroll-inner">
-          <div class="svc-scroll-left">
-            <div class="svc-scroll-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></div>
-            <h2 class="svc-scroll-h">Lighting Changes</h2>
-            <p class="svc-scroll-p">Downlights, pendants, full redesigns. All installed cleanly and safely.</p>
-            <a href="#contact" class="link-arrow">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-          </div>
-          <div class="svc-scroll-right"><span class="svc-scroll-num">06</span></div>
-        </div>
-      </div>
-
     </div>
 
-    <div class="svc-scroll-dots">
-      <div class="svc-scroll-dot active"></div>
-      <div class="svc-scroll-dot"></div>
-      <div class="svc-scroll-dot"></div>
-      <div class="svc-scroll-dot"></div>
-      <div class="svc-scroll-dot"></div>
-      <div class="svc-scroll-dot"></div>
+    <div class="svc-acc__item" role="listitem">
+      <button class="svc-acc__trigger" aria-expanded="false">
+        <span class="svc-acc__num">03</span>
+        <span class="svc-acc__name">Extra Sockets</span>
+        <span class="svc-acc__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </button>
+      <div class="svc-acc__body">
+        <div class="svc-acc__body-inner">
+          <p>Additional plug points added neatly, with minimal disruption to your walls and décor.</p>
+          <a href="#contact" class="svc-acc__cta">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
     </div>
+
+    <div class="svc-acc__item" role="listitem">
+      <button class="svc-acc__trigger" aria-expanded="false">
+        <span class="svc-acc__num">04</span>
+        <span class="svc-acc__name">EV Charger Installation</span>
+        <span class="svc-acc__badge">Growing Fast</span>
+        <span class="svc-acc__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </button>
+      <div class="svc-acc__body">
+        <div class="svc-acc__body-inner">
+          <p>Home EV chargers installed safely so your car is always charged and ready to go.</p>
+          <a href="#contact" class="svc-acc__cta">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-acc__item" role="listitem">
+      <button class="svc-acc__trigger" aria-expanded="false">
+        <span class="svc-acc__num">05</span>
+        <span class="svc-acc__name">Kitchen Refurbs</span>
+        <span class="svc-acc__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </button>
+      <div class="svc-acc__body">
+        <div class="svc-acc__body-inner">
+          <p>Extra circuits, moved sockets, new appliance connections. We handle all the electrical works alongside your builders.</p>
+          <a href="#contact" class="svc-acc__cta">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-acc__item" role="listitem">
+      <button class="svc-acc__trigger" aria-expanded="false">
+        <span class="svc-acc__num">06</span>
+        <span class="svc-acc__name">Lighting Changes</span>
+        <span class="svc-acc__icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+      </button>
+      <div class="svc-acc__body">
+        <div class="svc-acc__body-inner">
+          <p>Downlights, pendants, full redesigns. All installed cleanly and safely.</p>
+          <a href="#contact" class="svc-acc__cta">Enquire <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1906,6 +1863,21 @@
       </div>
     </div>
   </div>
+  </div>
+
+  <!-- MOBILE COVERAGE REDESIGN (hidden on desktop) -->
+  <div class="coverage-mob" aria-hidden="false">
+    <span class="coverage-mob__wm" aria-hidden="true">NORFOLK</span>
+    <div class="coverage-mob__inner">
+      <div class="coverage-mob__accent"></div>
+      <span class="eyebrow eyebrow--tl">Coverage</span>
+      <h2 class="h2 h2--lt">Based In Norwich,<br>Covering All Of Norfolk.</h2>
+      <p class="lead--lt">From the coast at Cromer to the Broads, King's Lynn to Great Yarmouth. Not sure if we cover you? Just drop us a message.</p>
+      <div class="coverage-mob__sep"></div>
+      <div class="coverage-mob__towns">
+        <span>Norwich</span><span>Wymondham</span><span>Dereham</span><span>Attleborough</span><span>Cromer</span><span>King's Lynn</span><span>Great Yarmouth</span><span>Holt</span>
+      </div>
+    </div>
   </div>
 
   <!-- CTA — connected, releases with map -->
@@ -2163,54 +2135,27 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
   }, 2200);
 })();
 
-// Services scroll carousel
+// Services accordion
 (function() {
-  var section = document.querySelector('.svc-scroll-section');
-  var track   = document.querySelector('.svc-scroll-track');
-  var dots    = document.querySelectorAll('.svc-scroll-dot');
-  var countEl = document.querySelector('.svc-scroll-count .cur');
-  if (!section || !track) return;
-
-  var NUM = 6;
-  var curX = 0;
-  var tgtX = 0;
-  var lastIdx = -1;
-
-  function setIdx(idx) {
-    if (idx === lastIdx) return;
-    lastIdx = idx;
-    dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
-    if (countEl) countEl.textContent = (idx + 1 < 10 ? '0' : '') + (idx + 1);
-  }
-
-  if (window.innerWidth <= 768) {
-    // Mobile: fully native horizontal swipe — no JS transforms at all
-    // Browser compositor handles scrolling smoothly
-    track.addEventListener('scroll', function() {
-      var idx = Math.round(track.scrollLeft / track.offsetWidth);
-      setIdx(Math.max(0, Math.min(NUM - 1, idx)));
-    }, { passive: true });
-    return;
-  }
-
-  // Desktop: scroll-jacked horizontal animation
-  function getProgress() {
-    var rect = section.getBoundingClientRect();
-    var scrollable = section.offsetHeight - window.innerHeight;
-    if (scrollable <= 0) return 0;
-    return Math.max(0, Math.min(1, -rect.top / scrollable));
-  }
-
-  function tick() {
-    requestAnimationFrame(tick);
-    tgtX = -getProgress() * (NUM - 1) * window.innerWidth;
-    curX += (tgtX - curX) * 0.12;
-    if (Math.abs(tgtX - curX) < 0.5) curX = tgtX;
-    track.style.transform = 'translateX(' + curX.toFixed(2) + 'px)';
-    setIdx(Math.round(-curX / window.innerWidth));
-  }
-
-  requestAnimationFrame(tick);
+  var items = document.querySelectorAll('.svc-acc__item');
+  if (!items.length) return;
+  items.forEach(function(item) {
+    var trigger = item.querySelector('.svc-acc__trigger');
+    trigger.addEventListener('click', function() {
+      var isOpen = item.classList.contains('svc-acc__item--open');
+      items.forEach(function(i) {
+        i.classList.remove('svc-acc__item--open');
+        i.querySelector('.svc-acc__trigger').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('svc-acc__item--open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  // First item open by default
+  items[0].classList.add('svc-acc__item--open');
+  items[0].querySelector('.svc-acc__trigger').setAttribute('aria-expanded', 'true');
 })();
 </script>
 </body>
