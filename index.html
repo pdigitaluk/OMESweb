@@ -456,6 +456,7 @@
     .svc-scroll-sticky {
       position: sticky; top: 0; height: 100vh;
       overflow: hidden; background: var(--bg);
+      touch-action: pan-y;
     }
     .svc-scroll-hdr {
       position: absolute; top: 40px; left: 50%;
@@ -2122,6 +2123,7 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
   var curX = 0;
   var tgtX = 0;
   var lastIdx = -1;
+  var rafPending = false;
 
   function getProgress() {
     var rect = section.getBoundingClientRect();
@@ -2137,21 +2139,34 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
     if (countEl) countEl.textContent = (idx + 1 < 10 ? '0' : '') + (idx + 1);
   }
 
+  function applyMobile() {
+    curX = -getProgress() * (NUM - 1) * window.innerWidth;
+    track.style.transform = 'translateX(' + curX.toFixed(1) + 'px)';
+    setIdx(Math.round(-curX / window.innerWidth));
+    rafPending = false;
+  }
+
   function tick() {
     requestAnimationFrame(tick);
     tgtX = -getProgress() * (NUM - 1) * window.innerWidth;
-    if (window.innerWidth <= 768) {
-      // No lerp on mobile — direct 1:1 mapping prevents shake from double-smoothing
-      curX = tgtX;
-    } else {
-      curX += (tgtX - curX) * 0.12;
-      if (Math.abs(tgtX - curX) < 0.5) curX = tgtX;
-    }
+    curX += (tgtX - curX) * 0.12;
+    if (Math.abs(tgtX - curX) < 0.5) curX = tgtX;
     track.style.transform = 'translateX(' + curX.toFixed(2) + 'px)';
     setIdx(Math.round(-curX / window.innerWidth));
   }
 
-  requestAnimationFrame(tick);
+  if (window.innerWidth <= 768) {
+    // Mobile: scroll-event driven only — no continuous RAF loop to fight the compositor
+    window.addEventListener('scroll', function() {
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(applyMobile);
+      }
+    }, { passive: true });
+    applyMobile();
+  } else {
+    requestAnimationFrame(tick);
+  }
 })();
 </script>
 </body>
