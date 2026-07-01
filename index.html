@@ -1232,10 +1232,15 @@
     /* ── Nav ── */
     @media (max-width: 720px) {
       .nav { padding: 10px 14px; }
-      .nav__pill { height: 52px; padding: 4px 4px 4px 4px; border-radius: 12px; }
-      .nav__logo-wrap { padding: 0 10px; }
-      .nav__logo { height: 30px; }
-      .nav__action { width: 44px; height: 44px; border-radius: 10px; }
+      .nav__pill {
+        height: 52px; padding: 4px 6px 4px 4px;
+        border-radius: 12px;
+        justify-content: space-between;
+      }
+      .nav__logo-wrap { padding: 0 12px; flex: 1; }
+      .nav__logo { height: 28px; }
+      .nav__actions { margin-left: 0; gap: 4px; }
+      .nav__action { width: 42px; height: 42px; border-radius: 10px; }
     }
 
     /* ── Hero ── */
