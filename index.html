@@ -1699,6 +1699,26 @@
     /* ══════════════════════════════
        AREA LIST
     ══════════════════════════════ */
+    /* FAQ */
+    .faq-section { background: var(--bg); padding: 100px 0; }
+    .faq-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+    .faq-left .h2 { margin-bottom: 20px; }
+    .faq-sub { color: var(--muted); font-size: 15px; line-height: 1.65; margin-bottom: 32px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 22px 0; background: none; border: none; cursor: pointer;
+      font-family: inherit; font-size: 16px; font-weight: 600; color: #fff;
+      text-align: left; transition: color 0.2s;
+    }
+    .faq-trigger:hover { color: var(--teal); }
+    .faq-trigger svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; flex-shrink: 0; transition: transform 0.3s; }
+    .faq-trigger[aria-expanded="true"] { color: var(--teal); }
+    .faq-trigger[aria-expanded="true"] svg { transform: rotate(45deg); }
+    .faq-body { display: none; padding-bottom: 20px; }
+    .faq-body p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+    .faq-item:first-child .faq-trigger { padding-top: 0; }
+
     .area-list-section { background: var(--bg); padding: 100px 0; }
     .area-list-inner {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -1738,6 +1758,9 @@
     @media (max-width: 720px) {
       .area-list-section { padding: 72px 0; }
       .area-list-inner { grid-template-columns: 1fr; gap: 40px; }
+      .faq-inner { grid-template-columns: 1fr; gap: 40px; }
+      .faq-left { text-align: left; }
+      .faq-section { padding: 72px 0; }
     }
   </style>
 </head>
@@ -2244,6 +2267,76 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="wrap">
+    <div class="faq-inner">
+      <div class="faq-left">
+        <span class="eyebrow anim">FAQ</span>
+        <h2 class="h2 anim d1">Common Questions.</h2>
+        <p class="faq-sub anim d2">Can't find what you're looking for? Message Oliver directly on WhatsApp.</p>
+        <a href="https://wa.me/447842492651" class="btn btn--primary btn--sm anim d3" target="_blank" rel="noopener">Ask a Question</a>
+      </div>
+      <div class="faq-right">
+        <div class="faq-item anim d1">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>What areas do you cover?</span>
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-body">
+            <p>Based in Norwich and covering all of Norfolk — including Acle, Aylsham, Attleborough, Cromer, Dereham, Fakenham, Great Yarmouth, Holt, King's Lynn, North Walsham, Sheringham, Swaffham, Thetford and Wymondham. Not sure if you're in range? Just drop a message.</p>
+          </div>
+        </div>
+        <div class="faq-item anim d2">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>Do you offer free quotes?</span>
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-body">
+            <p>Yes — all quotes are completely free with no obligation. Get in touch via WhatsApp or call Oliver directly on 07842 492651.</p>
+          </div>
+        </div>
+        <div class="faq-item anim d3">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>Are you Part P certified?</span>
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-body">
+            <p>Yes. OM Electrical Solutions is 18th Edition certified — all work is carried out to the latest British wiring regulations and fully compliant with Part P of the Building Regulations.</p>
+          </div>
+        </div>
+        <div class="faq-item anim d1">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>Do you use subcontractors?</span>
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-body">
+            <p>No. Oliver carries out all work himself — no subcontractors, ever. That means consistent quality and direct accountability on every single job.</p>
+          </div>
+        </div>
+        <div class="faq-item anim d2">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>How quickly can you respond to call outs?</span>
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-body">
+            <p>Call out response times depend on availability and location, but Oliver aims to get to you as quickly as possible. Call or WhatsApp directly on 07842 492651 for the fastest response.</p>
+          </div>
+        </div>
+        <div class="faq-item anim d3">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>What payment methods do you accept?</span>
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-body">
+            <p>Cash and bank transfer are both accepted. Payment terms will be agreed upfront before any work begins — no surprises.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <div class="map-cta-connected" id="contact">
     <div class="map-cta-connected__bg">
@@ -2536,6 +2629,19 @@ document.querySelectorAll('[data-slider]').forEach(function(wrap) {
   // First item open by default
   items[0].classList.add('svc-acc__item--open');
   items[0].querySelector('.svc-acc__trigger').setAttribute('aria-expanded', 'true');
+})();
+
+// FAQ accordion
+(function() {
+  var triggers = document.querySelectorAll('.faq-trigger');
+  triggers.forEach(function(trigger) {
+    trigger.addEventListener('click', function() {
+      var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      var body = trigger.nextElementSibling;
+      trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      body.style.display = isOpen ? 'none' : 'block';
+    });
+  });
 })();
 </script>
 </body>
