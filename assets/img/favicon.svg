@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#161616"/>
+  <!-- Lightning bolt / slash mark matching the logo icon -->
+  <polygon points="22,3 26,3 10,29 6,29" fill="#d8d8d8"/>
+  <polygon points="26,3 30,3 14,29 10,29" fill="#e8e8e8"/>
+</svg>
